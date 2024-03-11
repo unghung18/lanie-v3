@@ -1,0 +1,46 @@
+@use '../../../scss/' as *;
+
+.bannerTop {
+    @include flex(center, center);
+    color: white;
+    background-color: black;
+    width: 100%;
+    padding: 12px 16px;
+
+    .mySwiper {
+        margin: 0 auto;
+        width: 66.666667%;
+
+        @include sm {
+            width: 100%;
+        }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-color: #000;
+        color: #fff !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 16px !important;
+
+        @include sm {
+            font-size: 12px !important;
+        }
+    }
+
+    .swiper-button-prev {
+        left: 0 !important;
+    }
+
+    .swiper-button-next {
+        right: 0 !important;
+    }
+
+    .swiper-slide {
+        height: unset !important;
+    }
+
+}

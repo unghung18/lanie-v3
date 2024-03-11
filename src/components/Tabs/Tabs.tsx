@@ -1,0 +1,35 @@
+"use client"
+
+import React from 'react';
+import "./Tabs.scss";
+import { Segmented } from 'antd';
+import ProductCard from '../ProductCard/ProductCard';
+
+const Tabs = () => {
+    return (
+        <div className='tabs'>
+            <div className='tabs__header'>
+                <h2>What's New</h2>
+                <Segmented<string>
+                    options={["Áo", 'Đầm', 'Quần', "Chân váy"]}
+                    size='large'
+                    onChange={(value) => {
+                        console.log(value);
+                    }}
+                />
+            </div>
+            <div className='list-product'>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </div>
+        </div>
+    )
+}
+
+export default Tabs

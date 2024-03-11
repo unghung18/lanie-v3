@@ -1,0 +1,11 @@
+@use '../../../scss/' as *;
+
+.brand__item {
+    height: 36px;
+    @include flex(center, center);
+
+    img {
+        object-fit: cover;
+        height: 100%;
+    }
+}

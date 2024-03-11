@@ -1,95 +1,139 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Navbar from "@/components/Navbar/Navbar";
+import BannerTop from "@/components/Slider/BannerTop/BannerTop";
+import SliderMain from "@/components/Slider/SliderMain/SliderMain";
+import Tabs from "@/components/Tabs/Tabs";
+import SlideCollection from "@/components/Slider/SlideCollection/SlideCollection";
+import FlashSale from "@/components/FlashSale/FlashSale";
+import Newsletter from "@/components/NewsLetter/Newsletter";
+import SliderInstagram from "@/components/Slider/SliderInstagram/SliderInstagram";
+import SliderBrand from "@/components/Slider/SliderBrand/SliderBrand";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="app">
+        <Navbar />
+        <div className="app__content">
+
+          <BannerTop />
+
+          <SliderMain />
+
+          <div className="banner__block container">
+            <div className="banner__block--item">
+              <img src="/banner3.png" alt="banner__block" className="banner__block--item-image" />
+              <div className="banner__block--item-content">
+                <p>Best Men's Fashion</p>
+                <button>
+                  Shop Now
+                </button>
+              </div>
+            </div>
+            <div className="banner__block--item">
+              <img src="/banner1.png" alt="banner__block" className="banner__block--item-image" />
+              <div className="banner__block--item-content">
+                <p>Summer Sale Collection</p>
+                <button>
+                  Shop Now
+                </button>
+              </div>
+            </div>
+            <div className="banner__block--item">
+              <img src="/banner2.png" alt="banner__block" className="banner__block--item-image" />
+              <div className="banner__block--item-content">
+                <p>20% Off Accessories</p>
+                <button>
+                  Shop Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <section>
+            <div className="section__container container">
+              <Tabs />
+            </div>
+          </section>
+
+          <section>
+            <div className="section__container container">
+              <h2>Explore Collections</h2>
+              <SlideCollection />
+            </div>
+          </section>
+
+          <FlashSale />
+
+          <section className="benefit">
+            <div className="benefit__container container">
+              <div className="benefit__container__item">
+                <div className="benefit__container__item--icon">
+                  <img src="/benefitIcon/phone-call.png" alt="phone call icon" />
+                </div>
+                <div className="benefit__container__item--heading">
+                  24/7 Customer Service
+                </div>
+                <div className="benefit__container__item--caption">
+                  We're here to help you with any questions or concerns you have, 24/7.
+                </div>
+              </div>
+
+              <div className="benefit__container__item">
+                <div className="benefit__container__item--icon">
+                  <img src="/benefitIcon/assurance.png" alt="assurance" />
+                </div>
+                <div className="benefit__container__item--heading">
+                  14-Day Money Back
+                </div>
+                <div className="benefit__container__item--caption">
+                  If you're not satisfied with your purchase, simply return it within 14 days for a refund.
+                </div>
+              </div>
+
+              <div className="benefit__container__item">
+                <div className="benefit__container__item--icon">
+                  <img src="/benefitIcon/returning.png" alt="assurance" />
+                </div>
+                <div className="benefit__container__item--heading">
+                  Our Guarantee
+                </div>
+                <div className="benefit__container__item--caption">
+                  We stand behind our products and services and guarantee your satisfaction.
+                </div>
+              </div>
+
+              <div className="benefit__container__item">
+                <div className="benefit__container__item--icon">
+                  <img src="/benefitIcon/Fast-delivery.svg" alt="assurance" />
+                </div>
+                <div className="benefit__container__item--heading">
+                  Shipping worldwide
+                </div>
+                <div className="benefit__container__item--caption">
+                  We ship our products worldwide, making them accessible to customers everywhere.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <Newsletter />
+
+          <section className="instagram">
+            <div className="instagram--heading">Lanie On Instagram</div>
+            <div className="instagram--hastag">#LanieClothing</div>
+
+            <SliderInstagram />
+          </section>
+
+          <section className="brand container">
+
+            <SliderBrand />
+          </section>
+
+          <Footer />
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   );
 }

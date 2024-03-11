@@ -1,0 +1,64 @@
+@use '../../scss/' as *;
+
+.tabs {
+    @include flex(center, center);
+    flex-direction: column;
+    margin-top: 24px;
+
+    @include md {
+        margin-top: 35px;
+    }
+
+    &__header {
+        width: 100%;
+        @include flex(space-between, center);
+        flex-wrap: wrap;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+    }
+
+    .list-product {
+        margin-top: 40px;
+        gap: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        @include pc-1024 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .ant-segmented {
+        padding: 4px !important;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        .ant-segmented-group {
+            gap: 8px;
+        }
+
+        .ant-segmented-item {
+            padding: 8px 9px;
+
+            .ant-segmented-item-label {
+                font-size: 14px !important;
+                min-height: 20px !important;
+                line-height: 20px !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+                padding: none !important;
+
+
+                @include md {
+                    font-size: 12px !important;
+                    line-height: 16px !important;
+                    min-height: 16px !important;
+
+                }
+            }
+        }
+    }
+}
