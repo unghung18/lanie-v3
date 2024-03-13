@@ -71,6 +71,36 @@ video {
     }
 }
 
+.breadcum {
+    border-top: 1px solid #EFEFF4;
+    border-bottom: 1px solid #EFEFF4;
+    padding: 14px 16px;
+
+    &__container {
+        display: flex;
+        gap: 6px;
+
+        &>span {
+            font-size: 14px;
+            line-height: 22px;
+            color: rgb(160 160 160);
+            font-weight: 300;
+            text-transform: capitalize;
+            cursor: pointer;
+
+            md {
+                font-size: 13px;
+                line-height: 20px;
+            }
+        }
+
+        &>span:last-child {
+            cursor: default;
+            color: #000;
+        }
+    }
+}
+
 .banner__block {
     @include flex(space-between, center);
     margin-top: 80px;
@@ -121,6 +151,7 @@ video {
                 border: none;
                 border-bottom: 2px solid #000;
                 cursor: pointer;
+                color: #000;
             }
         }
 

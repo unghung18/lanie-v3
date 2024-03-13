@@ -1,7 +1,6 @@
 @use '../../scss/' as *;
 
 .product__item {
-    overflow: hidden;
 
     &--thumbs {
         position: relative;
@@ -116,7 +115,7 @@
 
             div {
                 background-color: #fff;
-                border-radius: 12px;
+                border-radius: 24px;
                 padding: 8px 10px;
                 font-size: 14px;
                 line-height: 20px;
@@ -176,7 +175,7 @@
             flex-wrap: wrap;
             transition: all 0.3s ease;
 
-            span:first-child {
+            &>span:first-child {
                 font-size: 16px;
                 line-height: 24px;
                 font-weight: 500;
@@ -187,7 +186,7 @@
                 }
             }
 
-            span:nth-child(2) {
+            &>span:nth-child(2) {
                 color: #A0A0A0;
                 font-size: 14px;
                 line-height: 22px;
@@ -200,7 +199,7 @@
                 }
             }
 
-            span:last-child {
+            &>span:last-child {
                 font-size: 14px;
                 line-height: 22px;
                 font-weight: 500;
@@ -241,7 +240,7 @@
             }
 
             .product__item--thumbs-buttons {
-                transform: translateY(0);
+                transform: translateY(-10px);
                 opacity: 1;
                 visibility: visible;
             }

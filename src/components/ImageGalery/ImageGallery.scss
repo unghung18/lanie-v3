@@ -1,0 +1,60 @@
+@use '../../scss/' as *;
+
+.gallery {
+    position: relative;
+    width: 45%;
+
+    @include md {
+        width: 100%;
+    }
+
+    &__thums {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+        margin-right: 12px;
+
+        @include md {
+            gap: 4px;
+        }
+
+        &--item {
+            position: relative;
+            max-width: 100px;
+            cursor: pointer;
+
+            @include pc-1024 {
+                max-width: 60px;
+            }
+
+            img {
+                aspect-ratio: 3/4;
+                overflow: hidden;
+                border: 1px solid #a0a0a0;
+                border-radius: 12px;
+                opacity: 0.4;
+                object-fit: cover;
+
+                &.active {
+                    opacity: 1;
+                    border: 1px solid #000;
+                }
+            }
+        }
+    }
+
+    &__image {
+        flex: 1;
+
+        img {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border-radius: 24px;
+            object-fit: cover;
+        }
+    }
+}

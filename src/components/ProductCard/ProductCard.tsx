@@ -1,28 +1,18 @@
 import React from 'react';
 import "./ProductCard.scss";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { FaEye } from "react-icons/fa";
 import { RiMessengerLine } from "react-icons/ri";
+import { useRouter } from 'next/navigation';
+import { ProductProps } from '@/types/types';
 
-const ProductCard = () => {
-    const product = {
-        category: "Dress",
-        title: "Mesh Shirt",
-        images: [
 
-        ],
-        comments: [],
-        price: 150000,
-        sale: 20,
-        description: "",
-        colors: ["#000", "#DB4444"],
-        sizes: [],
-        quantity: 10,
-        tag: ""
+const ProductCard = ({ product }: {
+    product: ProductProps
+}) => {
 
-    }
+    const router = useRouter()
     return (
-        <div className='product__item'>
+        <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
             <div className="product__item--thumbs">
                 <span className="product__item--thumbs-tag">
                     Sale
@@ -36,8 +26,8 @@ const ProductCard = () => {
                     </div>
                 </div>
                 <div className="product__item--thumbs-img">
-                    <img src="/product1.png" alt={product.title} />
-                    <img src="/product2.png" alt={product.title} />
+                    <img src="/product/product1.png" alt={product.title} />
+                    <img src="/product/product2.png" alt={product.title} />
                 </div>
                 <div className='product__item--thumbs-buttons'>
                     <div>Xem trước</div>

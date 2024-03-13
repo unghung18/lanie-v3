@@ -1,0 +1,101 @@
+@use '../../../../scss/' as *;
+
+.product-detail {
+
+    &__container {
+        margin-top: 30px;
+        display: flex;
+        gap: 60px;
+
+        @include md {
+            margin-top: 20px;
+            flex-direction: column;
+        }
+    }
+
+    &__review {
+        display: flex;
+        gap: 50px;
+        margin-top: 48px;
+
+        @include md {
+            margin-top: 20px;
+        }
+
+        &-ratings {
+            width: 30%;
+            text-align: center;
+            padding: 32px 42px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            height: min-content;
+
+            @include pc-1024 {
+                display: none;
+            }
+        }
+
+        &-comments {
+            flex: 1;
+
+            &--heading {
+                @include flex(space-between, center);
+
+                &>div:first-child {
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    font-size: 24px;
+                    line-height: 30px;
+
+
+                    @include pc-1024 {
+                        font-size: 22px;
+                        line-height: 28px;
+                    }
+
+                    @include md {
+                        font-size: 16px;
+                        line-height: 26px;
+                    }
+                }
+
+                &>div:last-child {
+                    padding: 16px 40px;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 600;
+                    border: 1px solid #333;
+                    border-radius: 12px;
+                    cursor: pointer;
+
+
+                    @include pc-1024 {
+                        padding: 12px 24px;
+                        border-radius: 10px;
+                    }
+
+                    @include md {
+                        padding: 10px 16px;
+                        border-radius: 8px;
+                        font-size: 12px;
+                        line-height: 16px;
+                    }
+                }
+            }
+
+            &--list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+
+                @include sm {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
+        }
+    }
+
+    &__similar {
+        margin: 40px 0;
+    }
+}

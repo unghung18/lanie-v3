@@ -4,6 +4,7 @@ import React from 'react';
 import "./Tabs.scss";
 import { Segmented } from 'antd';
 import ProductCard from '../ProductCard/ProductCard';
+import { productData } from '../../../contants';
 
 const Tabs = () => {
     return (
@@ -19,14 +20,9 @@ const Tabs = () => {
                 />
             </div>
             <div className='list-product'>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {productData.slice(0, 12).map((item) => (
+                    <ProductCard product={item} key={item._id} />
+                ))}
             </div>
         </div>
     )

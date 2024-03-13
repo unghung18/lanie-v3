@@ -16,7 +16,7 @@ const Navbar = () => {
 
         const handleScroll = () => {
 
-            if (window.scrollY > oldScrollY) {
+            if (window.scrollY > oldScrollY && window.scrollY >= 200) {
                 headerRef.current?.classList.add('scrollDown');
                 headerRef.current?.classList.remove('scrollUp');
             } else {
@@ -53,11 +53,11 @@ const Navbar = () => {
                         <Link href="#">SHOP</Link>
                     </li>
                     <li className="header__menu--item">
-                        <Link href="#">FEATURES</Link>
+                        <Link href="#">SẢN PHẨM</Link>
                     </li>
                     <li className="header__menu--item logo">Lanie</li>
                     <li className="header__menu--item">
-                        <Link href="#">COLLECTIONS</Link>
+                        <Link href="#">BỘ SƯU TẬP</Link>
                     </li>
                     <li className="header__menu--item">
                         <Link href="#">PAGES</Link>

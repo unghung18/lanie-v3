@@ -9,7 +9,6 @@
     background-color: #fff;
     height: 74px;
     transition: all 0.5s;
-    box-shadow: 0 10px 25px 0 rgba(43, 52, 74, .12);
     @include flex(center, center);
 
     @include md {
@@ -22,6 +21,7 @@
     }
 
     &.scrollUp {
+        box-shadow: 0 10px 25px 0 rgba(43, 52, 74, .12);
         opacity: 1;
     }
 
