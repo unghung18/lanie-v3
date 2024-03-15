@@ -1,11 +1,12 @@
-import React from 'react';
 import "../styles/ProductCard.scss";
+import React from 'react';
 import { FaRegHeart } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 import { ProductProps } from '@/types/types';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addWishlistItem } from '@/redux/slices/wishlistSlice';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
+import { toggleQuickview } from '@/redux/slices/toggleQuickViewSlice';
 
 const ProductCard = ({ product }: {
     product: ProductProps
@@ -17,11 +18,20 @@ const ProductCard = ({ product }: {
     function handleAddToWishlist(event: React.MouseEvent<HTMLElement>) {
         event.stopPropagation();
         dispatch(addWishlistItem(product));
-        dispatch(toggleWishlist())
+        dispatch(toggleWishlist(true))
+    }
+
+    function handleQuickview(event: React.MouseEvent<HTMLElement>) {
+        event.stopPropagation();
+        dispatch(toggleQuickview({
+            toggle: true,
+            product: product
+        }))
     }
 
     const dispatch = useAppDispatch();
-    const router = useRouter()
+    const router = useRouter();
+
     return (
         <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
             <div className="product__item--thumbs">
@@ -41,7 +51,7 @@ const ProductCard = ({ product }: {
                     <img src="/product/product2.png" alt={product.title} />
                 </div>
                 <div className='product__item--thumbs-buttons'>
-                    <div>Xem trước</div>
+                    <div onClick={handleQuickview}>Xem nhanh</div>
                     <div>Tư vấn thêm</div>
                 </div>
             </div>

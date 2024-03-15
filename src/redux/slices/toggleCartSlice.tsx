@@ -13,8 +13,8 @@ const toggleCartSlice = createSlice({
     name: "toggleCart",
     initialState,
     reducers: {
-        toggle(state) {
-            state.toggleCart = !state.toggleCart
+        toggle(state, actions) {
+            state.toggleCart = actions.payload
         }
     },
 });

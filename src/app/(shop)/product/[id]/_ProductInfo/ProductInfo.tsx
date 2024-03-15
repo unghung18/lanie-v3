@@ -8,18 +8,23 @@ import RateReadOnly from '@/components/RateReadOnly';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Link from 'next/link';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
 import { addItem } from '@/redux/slices/cartSlice';
+import { addWishlistItem } from '@/redux/slices/wishlistSlice';
+import { toggleQuickview } from '@/redux/slices/toggleQuickViewSlice';
 
 const ProductInfo = ({ product }: {
-    product: ProductProps
+    product: ProductProps;
 }) => {
     const [quantity, setQuantity] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(0);
-    const [selectedSize, setSelectedSize] = useState(0);
+    const [selectedColor, setSelectedColor] = useState(product?.colors[0].name);
+    const [selectedSize, setSelectedSize] = useState("S");
 
     const dispatch = useAppDispatch();
+
+    const { wishlistItems } = useAppSelector(state => state.wishlist);
+    const isWishlistItems = wishlistItems.includes(product);
 
     const handleDecrease = () => {
         if (quantity > 1) {
@@ -27,11 +32,14 @@ const ProductInfo = ({ product }: {
         }
     }
     function handleAddCart() {
-        dispatch(toggle());
+        dispatch(toggle(true));
+        dispatch(toggleQuickview({
+            toggle: false
+        }));
         dispatch(addItem(
             {
                 ...product,
-                selectedColor: selectedColor,
+                selectedColor: selectedColor ? selectedColor : product?.colors[0].name,
                 selectedSize: selectedSize,
                 selectedQuantity: quantity
             }
@@ -46,10 +54,10 @@ const ProductInfo = ({ product }: {
                         {product?.category}
                     </div>
                     <h1 className='product-info__header--name'>
-                        {product.title}
+                        {product?.title}
                     </h1>
                 </div>
-                <div className='product-info__header-wishlist'>
+                <div className={`product-info__header-wishlist ${isWishlistItems ? "active" : ""}`} onClick={() => dispatch(addWishlistItem(product))}>
                     <IoIosHeartEmpty size={20} />
                 </div>
             </div>
@@ -58,22 +66,22 @@ const ProductInfo = ({ product }: {
                 <span>(123 bình luận )</span>
             </div>
             <div className='product-info__price'>
-                <span>{product.price.toLocaleString()}₫</span>
+                <span>{product?.price.toLocaleString()}₫</span>
                 <div style={{ width: "2px", height: "15px", backgroundColor: "#E9E9E9" }}></div>
-                <span>{product.price.toLocaleString()}₫</span>
-                <span>{product.sale}%</span>
+                <span>{product?.price.toLocaleString()}₫</span>
+                <span>{product?.sale}%</span>
             </div>
 
             <div className='product-info__color'>
                 <div className="product-info__color-heading">
                     <span>Màu sắc:  </span>
-                    <span><strong>{product.colors[selectedColor].name}</strong></span>
+                    <span><strong>{selectedColor ? selectedColor : product?.colors[0].name}</strong></span>
                 </div>
                 <ul className='product-info__color-list'>
                     {
-                        product.colors.map((color, index) => (
-                            <li key={index} style={{ backgroundColor: `${color.color}`, width: "40px", height: "40px", borderRadius: "50%" }} onClick={() => setSelectedColor(index)}>
-                                {selectedColor == index && <IoMdCheckmark color='#fff' size={20} />}
+                        product?.colors.map((color, index) => (
+                            <li key={index} style={{ backgroundColor: `${color.color}`, width: "40px", height: "40px", borderRadius: "50%" }} onClick={() => setSelectedColor(color.name)}>
+                                {(selectedColor ? selectedColor : product?.colors[0].name) == color.name && <IoMdCheckmark color='#fff' size={20} />}
                             </li>
                         ))
                     }
@@ -82,18 +90,18 @@ const ProductInfo = ({ product }: {
 
             <div className='product-info__size'>
                 <div className="product-info__size-heading">
-                    {selectedSize == 0 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m50 - 1m60 | 45kg - 50kg)</span></div>}
-                    {selectedSize == 1 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m55 - 1m60 | 51kg - 55kg)</span></div>}
-                    {selectedSize == 2 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m55 - 1m60 | 56kg - 60kg)</span></div>}
-                    {selectedSize == 3 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m60 - 1m65 | 61kg - 64kg)</span></div>}
-                    {selectedSize == 4 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m60 - 1m65 | 65kg - 68kg)</span></div>}
-                    {selectedSize == 5 && <div>Kích cỡ:<strong> {product.sizes[selectedSize]}</strong><span>(1m60 - 1m65 | 69kg - 70kg)</span></div>}
+                    {selectedSize == "S" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m50 - 1m60 | 45kg - 50kg)</span></div>}
+                    {selectedSize == "M" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 51kg - 55kg)</span></div>}
+                    {selectedSize == "L" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 56kg - 60kg)</span></div>}
+                    {selectedSize == "XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 61kg - 64kg)</span></div>}
+                    {selectedSize == "2XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 65kg - 68kg)</span></div>}
+                    {selectedSize == "3XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 69kg - 70kg)</span></div>}
                     <span style={{ textDecoration: "underline", cursor: "pointer", color: "#DB4444" }}>Sizes</span>
                 </div>
                 <ul className='product-info__size-list'>
                     {
-                        product.sizes.map((size, index) => (
-                            <li key={index} onClick={() => setSelectedSize(index)} className={`${selectedSize == index && "active"}`}>
+                        product?.sizes.map((size, index) => (
+                            <li key={index} onClick={() => setSelectedSize(size)} className={`${selectedSize == size && "active"}`}>
                                 {size}
                             </li>
                         ))
@@ -178,8 +186,6 @@ const ProductInfo = ({ product }: {
                     </li>
                 </ul>
             </div>
-
-            {/*    <SliderSimilarProduct /> */}
         </div >
     )
 }

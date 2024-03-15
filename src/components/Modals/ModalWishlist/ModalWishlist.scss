@@ -21,7 +21,7 @@
         width: calc(100% - 40px);
     }
 
-    &>.heading {
+    &>.modal-wishlist__heading {
         padding: 0 24px 12px;
         @include flex(space-between, center);
 
@@ -60,6 +60,7 @@
     &>.list-product {
         padding: 0 24px;
         overflow-y: scroll;
+        max-height: calc(100vh - 90px);
 
         &>.product-item {
             padding: 24px 0;
@@ -127,4 +128,34 @@
         }
     }
 
+    &>.modal-wishlist__footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 24px;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 5px 18px 5px rgba(64, 72, 87, .15);
+
+        &>div:first-child {
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+        }
+
+        &>div:last-child {
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            @include md {
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+    }
 }

@@ -42,10 +42,16 @@
             cursor: pointer;
             @include flex(center, center);
 
-            &:hover {
+            &.active {
+                background-color: #db4444;
+                color: #fff;
+            }
+
+            &:hover:not(.active) {
                 background-color: #000;
                 color: #fff;
             }
+
         }
     }
 

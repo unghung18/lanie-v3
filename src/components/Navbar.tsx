@@ -143,11 +143,11 @@ const Navbar = () => {
                     <div style={{ cursor: "pointer" }}>
                         <AiOutlineUser size={24} />
                     </div>
-                    <div style={{ cursor: "pointer" }} onClick={() => dispatch(toggleWishlist())}>
+                    <div style={{ cursor: "pointer" }} onClick={() => dispatch(toggleWishlist(true))}>
                         <IoMdHeartEmpty size={24} />
                     </div>
                     <div style={{ cursor: "pointer" }}>
-                        <BsHandbag size={24} onClick={() => dispatch(toggle())} />
+                        <BsHandbag size={24} onClick={() => dispatch(toggle(true))} />
                     </div>
                 </div>
             </div>

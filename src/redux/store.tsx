@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import toggleCartReducer from "./slices/toggleCartSlice";
 import toggleWishlistReducer from "./slices/toggleWishlistSlice";
+import toggleQuickviewReducer from "./slices/toggleQuickViewSlice";
 import cartReducer from "./slices/cartSlice";
 import wishlistReducer from "./slices/wishlistSlice";
 
@@ -10,6 +11,7 @@ export const store = configureStore({
         wishlist: wishlistReducer,
         toggleCart: toggleCartReducer,
         toggleWishlist: toggleWishlistReducer,
+        toggleQuickview: toggleQuickviewReducer,
     }
 })
 

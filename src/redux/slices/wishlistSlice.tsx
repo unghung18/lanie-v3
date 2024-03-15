@@ -16,6 +16,7 @@ const wishlistSlice = createSlice({
     reducers: {
         // =========== add item ============
         addWishlistItem(state: initialStateProps, action) {
+
             const newItem: ProductProps = action.payload;
 
             const existingItem = state.wishlistItems.find(
@@ -28,6 +29,7 @@ const wishlistSlice = createSlice({
             else {
                 state.wishlistItems = state.wishlistItems.filter((item) => item._id !== newItem._id);
             }
+            console.log(JSON.stringify(state.wishlistItems));
         },
 
         //============ delete item ===========
@@ -39,7 +41,6 @@ const wishlistSlice = createSlice({
             if (existingItem) {
                 state.wishlistItems = state.wishlistItems.filter((item) => item._id !== id);
             }
-
         },
     },
 });

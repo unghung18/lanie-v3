@@ -3,6 +3,8 @@ import { IoClose } from "react-icons/io5";
 import './ModalWishlist.scss';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
+import { deleteWishlistItem } from '@/redux/slices/wishlistSlice';
+import Link from 'next/link';
 
 const ModalWishlist = ({ open }: {
     open: boolean;
@@ -11,11 +13,11 @@ const ModalWishlist = ({ open }: {
     const { wishlistItems } = useAppSelector(state => state.wishlist)
     const dispatch = useAppDispatch();
     return (
-        <div className={`overlay ${open && "active"}`}>
+        <div className={`overlay ${open ? "active" : ""}`}>
             <div className='modal-wishlist'>
-                <div className='heading'>
+                <div className='modal-wishlist__heading'>
                     <div className='heading__title'>Yêu thích</div>
-                    <div className='heading__close' onClick={() => dispatch(toggleWishlist())}>
+                    <div className='heading__close' onClick={() => dispatch(toggleWishlist(false))}>
                         <IoClose />
                     </div>
                 </div>
@@ -34,9 +36,13 @@ const ModalWishlist = ({ open }: {
                                     </div>
                                 </div>
                             </div>
-                            <div className='product-item__button'>Remove</div>
+                            <div className='product-item__button' onClick={() => dispatch(deleteWishlistItem(item._id))}>Remove</div>
                         </div>
                     ))}
+                </div>
+                <div className='modal-wishlist__footer'>
+                    <div className='button-main'>XEM TẤT CẢ</div>
+                    <div><Link href="/product" onClick={() => dispatch(toggleWishlist(false))}>TIẾP TỤC MUA HÀNG</Link></div>
                 </div>
             </div>
         </div>

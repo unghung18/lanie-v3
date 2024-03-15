@@ -13,8 +13,8 @@ const toggleWishlistSlice = createSlice({
     name: "toggleWishlist",
     initialState,
     reducers: {
-        toggleWishlist(state) {
-            state.toggleWishlist = !state.toggleWishlist
+        toggleWishlist(state, actions) {
+            state.toggleWishlist = actions.payload
         }
     },
 });

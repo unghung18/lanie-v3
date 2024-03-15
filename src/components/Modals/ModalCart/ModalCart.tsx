@@ -16,7 +16,7 @@ const ModalCart = ({ open }: {
     const dispatch = useAppDispatch();
 
     return (
-        <div className={`overlay ${open && "active"}`}>
+        <div className={`overlay ${open ? "active" : ""}`}>
             <div className='modal-cart'>
                 <div className='modal-cart__left'>
                     <div className='cart__left-heading'>
@@ -49,7 +49,7 @@ const ModalCart = ({ open }: {
                 <div className='modal-cart__right'>
                     <div className='cart__right-heading'>
                         <div className='cart__right-heading--title'>Shopping Cart</div>
-                        <div className='cart__right-heading--close' onClick={() => dispatch(toggle())}>
+                        <div className='cart__right-heading--close' onClick={() => dispatch(toggle(false))}>
                             <IoClose />
                         </div>
                     </div>
@@ -71,7 +71,7 @@ const ModalCart = ({ open }: {
                                         </span>
                                     </div>
                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
-                                        <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize", fontSize: "14px", fontWeight: "400" }}>S / Red / SL: {item.selectedQuantity}</div>
+                                        <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize", fontSize: "14px", fontWeight: "400" }}>{item.selectedSize} / {item.selectedColor} / SL: {item.selectedQuantity}</div>
                                         <div>{item.selectedTotalPrice.toLocaleString()}₫</div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@ const ModalCart = ({ open }: {
                             <div className='button-main'>GIỎ HÀNG</div>
                             <div className='button-main'>THANH TOÁN</div>
                         </div>
-                        <div className='continue-shopping-btn'><Link href="/product" onClick={() => dispatch(toggle())}>TIẾP TỤC MUA HÀNG</Link></div>
+                        <div className='continue-shopping-btn'><Link href="/product" onClick={() => dispatch(toggle(false))}>TIẾP TỤC MUA HÀNG</Link></div>
                     </div>
                 </div>
             </div>

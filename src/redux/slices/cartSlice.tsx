@@ -50,17 +50,17 @@ const cartSlice = createSlice({
             if (!existingItem) {
                 state.cartItems.push({
                     ...newItem,
-                    selectedQuantity: 1,
-                    selectedTotalPrice: newItem.price,
+                    selectedTotalPrice: newItem.price * newItem.selectedQuantity,
+                    selectedQuantity: newItem.selectedQuantity,
                     selectedColor: newItem.selectedColor,
                     selectedSize: newItem.selectedSize
                 });
             } else {
                 existingItem.selectedSize = newItem.selectedSize
                 existingItem.selectedColor = newItem.selectedColor
-                existingItem.selectedQuantity++;
+                existingItem.selectedQuantity += newItem.selectedQuantity;
                 existingItem.selectedTotalPrice =
-                    Number(existingItem.selectedTotalPrice) + Number(newItem.price);
+                    Number(existingItem.selectedTotalPrice) + Number(newItem.price) * Number(newItem.selectedQuantity);
             }
 
             state.totalAmount = state.cartItems.reduce(
