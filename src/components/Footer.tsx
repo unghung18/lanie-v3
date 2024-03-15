@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.scss';
+import '../styles/Footer.scss';
 import Link from 'next/link';
 import { FaTiktok, FaFacebookF, FaInstagram } from "react-icons/fa6";
 

@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer/Footer"
-import Navbar from "@/components/Navbar/Navbar"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
 
 export default function ShopLayout({
     children, // will be a page or nested layout

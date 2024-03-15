@@ -1,13 +1,13 @@
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar";
 import BannerTop from "@/components/Slider/BannerTop/BannerTop";
 import SliderMain from "@/components/Slider/SliderMain/SliderMain";
-import Tabs from "@/components/Tabs/Tabs";
+import Tabs from "@/components/Tabs";
 import SlideCollection from "@/components/Slider/SlideCollection/SlideCollection";
-import FlashSale from "@/components/FlashSale/FlashSale";
-import Newsletter from "@/components/NewsLetter/Newsletter";
+import FlashSale from "@/components/FlashSale";
+import Newsletter from "@/components/Newsletter";
 import SliderInstagram from "@/components/Slider/SliderInstagram/SliderInstagram";
 import SliderBrand from "@/components/Slider/SliderBrand/SliderBrand";
-import Footer from "@/components/Footer/Footer";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (

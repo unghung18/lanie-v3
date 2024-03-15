@@ -1,6 +1,7 @@
 'use client'
+
 import React, { useState } from 'react';
-import './ImageGallery.scss';
+import '../styles/ImageGallery.scss';
 
 const ImageGallery = ({ imageUrls }: {
     imageUrls: Array<string>

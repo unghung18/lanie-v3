@@ -6,7 +6,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
-
+import ReduxProvider from "@/redux/provider";
+import Modal from "@/components/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ReduxProvider>
+        <body className={inter.className}>
+          {children}
+          <div></div>
+          <Modal />
+        </body>
+      </ReduxProvider>
     </html>
   );
 }

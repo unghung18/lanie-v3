@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { useCountDownTimer } from '../../hooks/CountDownTimer';
-import "./FlashSale.scss";
+import { useCountDownTimer } from '../hooks/CountDownTimer';
+import "../styles/FlashSale.scss";
 
 const date = new Date('2024-03-20T12:00:00');
 

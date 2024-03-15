@@ -1,4 +1,4 @@
-@use '../../../../scss/' as *;
+@use "../../scss/" as *;
 
 .product-detail {
 
@@ -17,6 +17,7 @@
         display: flex;
         gap: 50px;
         margin-top: 48px;
+        margin-bottom: 40px;
 
         @include md {
             margin-top: 20px;
@@ -95,7 +96,5 @@
         }
     }
 
-    &__similar {
-        margin: 40px 0;
-    }
+    &__similar {}
 }

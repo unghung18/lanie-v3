@@ -1,12 +1,11 @@
-import ImageGallery from '@/components/ImageGalery/ImageGallery';
+import ImageGallery from '@/components/ImageGallery';
 import React from 'react';
-import './page.scss';
+import '../../../../styles/product/productdetail.scss';
 
 import { productData } from '../../../../../contants';
-import { Breadcrumb } from 'antd';
 import ProductInfo from './_ProductInfo/ProductInfo';
 import SliderSimilarProduct from '@/components/Slider/SliderSimilarProduct/SliderSimilarProduct';
-import RateReadOnly from '@/components/Rate/RateReadOnly';
+import RateReadOnly from '@/components/RateReadOnly';
 
 export default function Page({ params }: {
     params: {

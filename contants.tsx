@@ -299,3 +299,94 @@ export const productData = [
         tag: ""
     }
 ]
+
+export const RecommendProductCart = [
+    {
+        _id: "1",
+        category: "Dress",
+        title: "Mesh Shirt",
+        images: [
+            "/product/product1.png", "/product/product2.png", "/product/product3.png"
+        ],
+        comments: [],
+        price: 150000,
+        sale: 20,
+        description: "Day la description",
+        colors: [{
+            name: "Red",
+            color: "red"
+        }, {
+            name: "Black",
+            color: "black"
+        }],
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        quantity: 10,
+        tag: ""
+    },
+    {
+        _id: "2",
+        category: "Dress",
+        title: "Mesh Shirt",
+        images: [
+            "/product/product1.png", "/product/product2.png", "/product/product3.png"
+        ],
+        comments: [],
+        price: 150000,
+        sale: 20,
+        description: "Day la description",
+        colors: [{
+            name: "Red",
+            color: "red"
+        }, {
+            name: "Black",
+            color: "black"
+        }],
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        quantity: 10,
+        tag: ""
+    },
+    {
+        _id: "3",
+        category: "Dress",
+        title: "Mesh Shirt",
+        images: [
+            "/product/product1.png", "/product/product2.png", "/product/product3.png"
+        ],
+        comments: [],
+        price: 150000,
+        sale: 20,
+        description: "Day la description",
+        colors: [{
+            name: "Red",
+            color: "red"
+        }, {
+            name: "Black",
+            color: "black"
+        }],
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        quantity: 10,
+        tag: ""
+    },
+    {
+        _id: "3",
+        category: "Dress",
+        title: "Mesh Shirt",
+        images: [
+            "/product/product1.png", "/product/product2.png", "/product/product3.png"
+        ],
+        comments: [],
+        price: 150000,
+        sale: 20,
+        description: "Day la description",
+        colors: [{
+            name: "Red",
+            color: "red"
+        }, {
+            name: "Black",
+            color: "black"
+        }],
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        quantity: 10,
+        tag: ""
+    },
+]

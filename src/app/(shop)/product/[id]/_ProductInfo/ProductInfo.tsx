@@ -3,12 +3,11 @@
 import { ProductProps } from '@/types/types';
 import React, { useState } from 'react';
 import { IoIosHeartEmpty, IoMdCheckmark } from "react-icons/io";
-import './ProductInfo.scss';
-import RateReadOnly from '@/components/Rate/RateReadOnly';
+import '../../../../../styles/product/productinfo.scss';
+import RateReadOnly from '@/components/RateReadOnly';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Link from 'next/link';
-import SliderSimilarProduct from '@/components/Slider/SliderSimilarProduct/SliderSimilarProduct';
 
 const ProductInfo = ({ product }: {
     product: ProductProps

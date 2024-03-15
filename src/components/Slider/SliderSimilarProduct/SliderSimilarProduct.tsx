@@ -3,7 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { productData } from '../../../../contants';
-import ProductCard from '@/components/ProductCard/ProductCard';
+import ProductCard from '@/components/ProductCard';
 
 const SliderSimilarProduct = () => {
     return (

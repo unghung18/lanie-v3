@@ -1,10 +1,10 @@
 "use client"
 
 import React from 'react';
-import "./Tabs.scss";
+import "../styles/Tabs.scss";
 import { Segmented } from 'antd';
-import ProductCard from '../ProductCard/ProductCard';
-import { productData } from '../../../contants';
+import ProductCard from './ProductCard';
+import { productData } from '../../contants';
 
 const Tabs = () => {
     return (

@@ -1,15 +1,13 @@
 import React from 'react';
-import "./ProductCard.scss";
+import "../styles/ProductCard.scss";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { RiMessengerLine } from "react-icons/ri";
 import { useRouter } from 'next/navigation';
 import { ProductProps } from '@/types/types';
 
-
 const ProductCard = ({ product }: {
     product: ProductProps
 }) => {
-
     const router = useRouter()
     return (
         <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
