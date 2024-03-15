@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { MdMenuOpen } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
+import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
 
 const Navbar = () => {
     const { toggleCart } = useAppSelector((state) => state.toggleCart)
@@ -142,7 +143,7 @@ const Navbar = () => {
                     <div style={{ cursor: "pointer" }}>
                         <AiOutlineUser size={24} />
                     </div>
-                    <div style={{ cursor: "pointer" }}>
+                    <div style={{ cursor: "pointer" }} onClick={() => dispatch(toggleWishlist())}>
                         <IoMdHeartEmpty size={24} />
                     </div>
                     <div style={{ cursor: "pointer" }}>

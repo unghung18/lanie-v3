@@ -5,7 +5,7 @@ interface stateTypeProp {
 }
 
 const initialState: stateTypeProp = {
-    toggleCart: true
+    toggleCart: false
 };
 
 

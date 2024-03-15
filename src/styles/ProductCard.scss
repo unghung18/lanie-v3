@@ -36,9 +36,20 @@
                 @include flex(center, center);
 
                 &:hover {
+                    background-color: #000;
+                    color: #fff;
+
                     span {
                         opacity: 1;
                         right: 100%;
+                    }
+                }
+
+                &.active {
+                    background-color: #db4444;
+
+                    &>.icon {
+                        color: #fff;
                     }
                 }
 
@@ -52,9 +63,9 @@
                     transition: .3s;
                     box-shadow: 0 5px 13px rgba(80, 80, 80, .5);
                     pointer-events: none;
-                    color: #fff;
                     padding: 3px 6px;
                     border-radius: 2px;
+                    color: #fff;
                     background-color: #000;
 
                     font-size: 12px;

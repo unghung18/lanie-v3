@@ -8,6 +8,9 @@ import RateReadOnly from '@/components/RateReadOnly';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Link from 'next/link';
+import { useAppDispatch } from '@/redux/hooks';
+import { toggle } from '@/redux/slices/toggleCartSlice';
+import { addItem } from '@/redux/slices/cartSlice';
 
 const ProductInfo = ({ product }: {
     product: ProductProps
@@ -16,10 +19,23 @@ const ProductInfo = ({ product }: {
     const [selectedColor, setSelectedColor] = useState(0);
     const [selectedSize, setSelectedSize] = useState(0);
 
+    const dispatch = useAppDispatch();
+
     const handleDecrease = () => {
         if (quantity > 1) {
             setQuantity(prev => prev - 1);
         }
+    }
+    function handleAddCart() {
+        dispatch(toggle());
+        dispatch(addItem(
+            {
+                ...product,
+                selectedColor: selectedColor,
+                selectedSize: selectedSize,
+                selectedQuantity: quantity
+            }
+        ))
     }
 
     return (
@@ -27,7 +43,7 @@ const ProductInfo = ({ product }: {
             <div className='product-info__header'>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <div className="product-info__header--category">
-                        {product.category}
+                        {product?.category}
                     </div>
                     <h1 className='product-info__header--name'>
                         {product.title}
@@ -95,7 +111,7 @@ const ProductInfo = ({ product }: {
                         <span>{quantity}</span>
                         <FaPlus onClick={() => setQuantity(prev => prev + 1)} style={{ cursor: "pointer" }} />
                     </div>
-                    <div className='button' style={{ display: "flex", alignItems: "center" }}><MdOutlineShoppingBag /><span>Thêm vào giỏ hàng</span></div>
+                    <div className='button' style={{ display: "flex", alignItems: "center" }} onClick={() => handleAddCart()}><MdOutlineShoppingBag /><span>Thêm vào giỏ hàng</span></div>
                 </div>
             </div>
 

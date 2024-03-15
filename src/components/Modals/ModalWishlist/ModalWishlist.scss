@@ -1,0 +1,130 @@
+@use '../../../scss/' as *;
+
+.modal-wishlist {
+    width: 540px;
+    position: absolute;
+    top: 20px;
+    right: -100%;
+    height: calc(100vh - 40px);
+    background-color: #fff;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all .5s ease;
+    padding: 24px 0;
+
+    @include md {
+        width: 480px;
+        border-radius: 16px;
+    }
+
+    @include sm {
+        width: calc(100% - 40px);
+    }
+
+    &>.heading {
+        padding: 0 24px 12px;
+        @include flex(space-between, center);
+
+        &>.heading__title {
+            font-weight: 600;
+            text-transform: capitalize;
+            font-size: 24px;
+            line-height: 30px;
+
+            @include pc-1024 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            @include md {
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+
+        &>.heading__close {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            background-color: rgb(247 247 247);
+            @include flex(center, center);
+            border-radius: 50%;
+
+            &:hover {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
+
+    &>.list-product {
+        padding: 0 24px;
+        overflow-y: scroll;
+
+        &>.product-item {
+            padding: 24px 0;
+            @include flex(space-between, center);
+
+            &>.product-item__info {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                &>.product-item__info-image {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+
+                &>.product-item__info-content {
+                    &>.name {
+                        font-size: 16px;
+                        line-height: 26px;
+                        font-weight: 600;
+                        text-transform: capitalize;
+
+                        @include md {
+                            font-size: 14px;
+                            line-height: 24px;
+                        }
+                    }
+
+                    &>.price {
+                        display: flex;
+                        margin-top: 8px;
+                        gap: 8px;
+
+                        &>span {
+                            font-size: 15px;
+                            line-height: 24px;
+                            font-weight: 500;
+
+                            @include md {
+                                font-size: 13px;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            &>.product-item__button {
+                text-decoration: underline;
+                color: rgb(219 68 68);
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: 600;
+                cursor: pointer;
+
+                @include md {
+                    font-size: 13px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
+}

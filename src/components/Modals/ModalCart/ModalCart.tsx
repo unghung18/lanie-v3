@@ -4,14 +4,17 @@ import { RecommendProductCart } from '../../../../contants';
 import { SlHandbag } from "react-icons/sl";
 import { IoClose } from "react-icons/io5";
 import { BsTrash } from "react-icons/bs";
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
-
+import { deleteItem } from '@/redux/slices/cartSlice';
+import Link from 'next/link';
 const ModalCart = ({ open }: {
     open: boolean;
 }) => {
 
+    const { cartItems, totalAmount, totalQuantity } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch();
+
     return (
         <div className={`overlay ${open && "active"}`}>
             <div className='modal-cart'>
@@ -46,7 +49,7 @@ const ModalCart = ({ open }: {
                 <div className='modal-cart__right'>
                     <div className='cart__right-heading'>
                         <div className='cart__right-heading--title'>Shopping Cart</div>
-                        <div className='cart__right-heading--close' style={{ cursor: "pointer" }} onClick={() => dispatch(toggle())}>
+                        <div className='cart__right-heading--close' onClick={() => dispatch(toggle())}>
                             <IoClose />
                         </div>
                     </div>
@@ -55,85 +58,36 @@ const ModalCart = ({ open }: {
                         <p>Your cart will expire in <span style={{ color: "rgb(219 68 68)", fontSize: "14px", lineHeight: "22px", fontWeight: "600", }}>0:00</span> minutes!.  Please checkout now before your items sell out!</p>
                     </div>
                     <div className='cart__right-listproduct'>
-                        <div className='product-item'>
-                            <div className="product-item__image">
-                                <img src="/product/product2.png" alt="product image" />
-                            </div>
-                            <div className='product-item__info'>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <span>Mesh Shirt</span>
-                                    <span>
-                                        <BsTrash color='red' style={{ cursor: "pointer" }} size={20} />
-                                    </span>
+                        {cartItems.map((item: any) => (
+                            <div className='product-item' key={item._id}>
+                                <div className="product-item__image">
+                                    <img src={item.images[0]} alt="product image" />
                                 </div>
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
-                                    <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize" }}>S/Red</div>
-                                    <div>150,000đ</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='product-item'>
-                            <div className="product-item__image">
-                                <img src="/product/product2.png" alt="product image" />
-                            </div>
-                            <div className='product-item__info'>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <span>Mesh Shirt</span>
-                                    <span>
-                                        <BsTrash color='red' style={{ cursor: "pointer" }} size={20} />
-                                    </span>
-                                </div>
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
-                                    <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize" }}>S/Red</div>
-                                    <div>150,000đ</div>
+                                <div className='product-item__info'>
+                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                        <span>Mesh Shirt</span>
+                                        <span onClick={() => dispatch(deleteItem(item._id))}>
+                                            <BsTrash color='red' style={{ cursor: "pointer" }} size={20} />
+                                        </span>
+                                    </div>
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
+                                        <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize", fontSize: "14px", fontWeight: "400" }}>S / Red / SL: {item.selectedQuantity}</div>
+                                        <div>{item.selectedTotalPrice.toLocaleString()}₫</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='product-item'>
-                            <div className="product-item__image">
-                                <img src="/product/product2.png" alt="product image" />
-                            </div>
-                            <div className='product-item__info'>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <span>Mesh Shirt</span>
-                                    <span>
-                                        <BsTrash color='red' style={{ cursor: "pointer" }} size={20} />
-                                    </span>
-                                </div>
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
-                                    <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize" }}>S/Red</div>
-                                    <div>150,000đ</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='product-item'>
-                            <div className="product-item__image">
-                                <img src="/product/product2.png" alt="product image" />
-                            </div>
-                            <div className='product-item__info'>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <span>Mesh Shirt</span>
-                                    <span>
-                                        <BsTrash color='red' style={{ cursor: "pointer" }} size={20} />
-                                    </span>
-                                </div>
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px", gap: "12px" }}>
-                                    <div style={{ color: "rgb(160 160 160)", textTransform: "capitalize" }}>S/Red</div>
-                                    <div>150,000đ</div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className='cart__right-footer'>
                         <div className='heading'>
                             <span>Subtotal</span>
-                            <span>135,000đ</span>
+                            <span>{totalAmount.toLocaleString()}₫</span>
                         </div>
                         <div className='buttons'>
                             <div className='button-main'>GIỎ HÀNG</div>
                             <div className='button-main'>THANH TOÁN</div>
                         </div>
-                        <div className='continue-shopping-btn'>TIẾP TỤC MUA HÀNG</div>
+                        <div className='continue-shopping-btn'><Link href="/product" onClick={() => dispatch(toggle())}>TIẾP TỤC MUA HÀNG</Link></div>
                     </div>
                 </div>
             </div>

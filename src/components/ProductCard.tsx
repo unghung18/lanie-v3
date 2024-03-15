@@ -1,13 +1,26 @@
 import React from 'react';
 import "../styles/ProductCard.scss";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { RiMessengerLine } from "react-icons/ri";
+import { FaRegHeart } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 import { ProductProps } from '@/types/types';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { addWishlistItem } from '@/redux/slices/wishlistSlice';
+import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
 
 const ProductCard = ({ product }: {
     product: ProductProps
 }) => {
+
+    const { wishlistItems } = useAppSelector(state => state.wishlist);
+    const isWishlistItems = wishlistItems.includes(product);
+
+    function handleAddToWishlist(event: React.MouseEvent<HTMLElement>) {
+        event.stopPropagation();
+        dispatch(addWishlistItem(product));
+        dispatch(toggleWishlist())
+    }
+
+    const dispatch = useAppDispatch();
     const router = useRouter()
     return (
         <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
@@ -16,11 +29,11 @@ const ProductCard = ({ product }: {
                     Sale
                 </span>
                 <div className="product__item--thumbs-actions">
-                    <div className='product__item--thumbs-actions-wishlist'>
+                    <div className={`product__item--thumbs-actions-wishlist ${isWishlistItems ? "active" : ""}`} onClick={handleAddToWishlist}>
                         <span>
                             Add to wishlist
                         </span>
-                        <IoIosHeartEmpty />
+                        <FaRegHeart className='icon' size={16} />
                     </div>
                 </div>
                 <div className="product__item--thumbs-img">

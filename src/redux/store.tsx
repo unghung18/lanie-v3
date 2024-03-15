@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import toggleCartReducer from "./slices/toggleCartSlice";
+import toggleWishlistReducer from "./slices/toggleWishlistSlice";
+import cartReducer from "./slices/cartSlice";
+import wishlistReducer from "./slices/wishlistSlice";
 
 export const store = configureStore({
     reducer: {
-        toggleCart: toggleCartReducer
+        cart: cartReducer,
+        wishlist: wishlistReducer,
+        toggleCart: toggleCartReducer,
+        toggleWishlist: toggleWishlistReducer,
     }
 })
 
