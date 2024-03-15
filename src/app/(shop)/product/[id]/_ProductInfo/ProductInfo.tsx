@@ -18,7 +18,7 @@ const ProductInfo = ({ product }: {
     product: ProductProps;
 }) => {
     const [quantity, setQuantity] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(product?.colors[0].name);
+    const [selectedColor, setSelectedColor] = useState(undefined);
     const [selectedSize, setSelectedSize] = useState("S");
 
     const dispatch = useAppDispatch();
