@@ -3,7 +3,7 @@ import './ModalQuickView.scss';
 import { IoClose } from 'react-icons/io5';
 import ProductInfo from '@/app/(shop)/product/[id]/_ProductInfo/ProductInfo';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { toggleQuickview } from '@/redux/slices/toggleQuickViewSlice';
+import { toggleQuickview } from '@/redux/slices/toggleQuickviewSlice';
 
 const ModalQuickView = ({ open }: {
     open: boolean

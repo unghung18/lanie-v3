@@ -6,7 +6,7 @@ import { ProductProps } from '@/types/types';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addWishlistItem } from '@/redux/slices/wishlistSlice';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
-import { toggleQuickview } from '@/redux/slices/toggleQuickViewSlice';
+import { toggleQuickview } from '@/redux/slices/toggleQuickviewSlice';
 
 const ProductCard = ({ product }: {
     product: ProductProps

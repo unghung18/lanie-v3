@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import toggleCartReducer from "./slices/toggleCartSlice";
 import toggleWishlistReducer from "./slices/toggleWishlistSlice";
-import toggleQuickviewReducer from "./slices/toggleQuickViewSlice";
+import toggleQuickviewReducer from "./slices/toggleQuickviewSlice";
 import cartReducer from "./slices/cartSlice";
 import wishlistReducer from "./slices/wishlistSlice";
 

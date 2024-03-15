@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
 import { addItem } from '@/redux/slices/cartSlice';
 import { addWishlistItem } from '@/redux/slices/wishlistSlice';
-import { toggleQuickview } from '@/redux/slices/toggleQuickViewSlice';
+import { toggleQuickview } from '@/redux/slices/toggleQuickviewSlice';
 
 const ProductInfo = ({ product }: {
     product: ProductProps;
