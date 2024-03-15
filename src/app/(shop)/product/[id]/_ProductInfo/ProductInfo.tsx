@@ -3,7 +3,7 @@
 import { ProductProps } from '@/types/types';
 import React, { useState } from 'react';
 import { IoIosHeartEmpty, IoMdCheckmark } from "react-icons/io";
-import '../../../../../styles/product/productinfo.scss';
+import './ProductInfo.scss';
 import RateReadOnly from '@/components/RateReadOnly';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { MdOutlineShoppingBag } from "react-icons/md";
