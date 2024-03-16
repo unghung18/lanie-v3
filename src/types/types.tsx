@@ -8,10 +8,10 @@ export interface ProductProps {
     sale: number;
     description: string;
     colors: any[];
-    sizes: [{
+    sizes: {
         name: string;
         quantity: number;
-    }];
-    toltalQuantity: number;
+    }[];
+    totalQuantity: number;
     tag: string;
 }
