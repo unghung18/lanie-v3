@@ -1,7 +1,7 @@
 "use client"
 
 import { ProductProps } from '@/types/types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosHeartEmpty, IoMdCheckmark } from "react-icons/io";
 import './ProductInfo.scss';
 import RateReadOnly from '@/components/RateReadOnly';
@@ -24,7 +24,15 @@ const ProductInfo = ({ product }: {
     const dispatch = useAppDispatch();
 
     const { wishlistItems } = useAppSelector(state => state.wishlist);
-    const isWishlistItems = wishlistItems.includes(product);
+
+    function isExits() {
+        for (const item of wishlistItems) {
+            if (item._id === product._id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     const handleDecrease = () => {
         if (quantity > 1) {
@@ -57,7 +65,7 @@ const ProductInfo = ({ product }: {
                         {product?.title}
                     </h1>
                 </div>
-                <div className={`product-info__header-wishlist ${isWishlistItems ? "active" : ""}`} onClick={() => dispatch(addWishlistItem(product))}>
+                <div className={`product-info__header-wishlist ${isExits() ? "active" : ""}`} onClick={() => dispatch(addWishlistItem(product))}>
                     <IoIosHeartEmpty size={20} />
                 </div>
             </div>

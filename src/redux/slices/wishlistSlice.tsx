@@ -29,7 +29,6 @@ const wishlistSlice = createSlice({
             else {
                 state.wishlistItems = state.wishlistItems.filter((item) => item._id !== newItem._id);
             }
-            console.log(JSON.stringify(state.wishlistItems));
         },
 
         //============ delete item ===========

@@ -13,7 +13,15 @@ const ProductCard = ({ product }: {
 }) => {
 
     const { wishlistItems } = useAppSelector(state => state.wishlist);
-    const isWishlistItems = wishlistItems.includes(product);
+
+    function isExits() {
+        for (const item of wishlistItems) {
+            if (item._id === product._id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     function handleAddToWishlist(event: React.MouseEvent<HTMLElement>) {
         event.stopPropagation();
@@ -39,7 +47,7 @@ const ProductCard = ({ product }: {
                     Sale
                 </span>
                 <div className="product__item--thumbs-actions">
-                    <div className={`product__item--thumbs-actions-wishlist ${isWishlistItems ? "active" : ""}`} onClick={handleAddToWishlist}>
+                    <div className={`product__item--thumbs-actions-wishlist ${isExits() ? "active" : ""}`} onClick={handleAddToWishlist}>
                         <span>
                             Add to wishlist
                         </span>
