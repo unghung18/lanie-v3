@@ -20,7 +20,7 @@ const initialState: stateTypeProp = {
         description: "",
         colors: [],
         sizes: [],
-        quantity: 0,
+        totalQuantity: 0,
         tag: ""
     }
 };
