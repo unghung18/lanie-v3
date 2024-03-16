@@ -60,7 +60,7 @@ const ProductCard = ({ product }: {
                 <div className='product__item--info-colors'>
                     {
                         product.colors.map((color, index) => (
-                            <span key={index} style={{ backgroundColor: `${color}` }}></span>
+                            <span key={index} style={{ backgroundColor: `${color.color}` }}></span>
                         ))
                     }
                 </div>

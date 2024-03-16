@@ -45,14 +45,17 @@ export const productData = [
         price: 150000,
         sale: 20,
         description: "Day la description",
-        colors: [{
-            name: "Red",
-            color: "red"
-        }, {
-            name: "Black",
-            color: "black"
-        }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        colors: [
+            { name: "Red", color: "red" },
+            { name: "Black", color: "black" }],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -74,7 +77,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -96,7 +106,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -118,7 +135,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -140,7 +164,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -162,7 +193,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -184,7 +222,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -206,7 +251,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -228,7 +280,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -250,7 +309,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -272,7 +338,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -294,7 +367,14 @@ export const productData = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     }
@@ -319,7 +399,14 @@ export const RecommendProductCart = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -341,7 +428,14 @@ export const RecommendProductCart = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -363,7 +457,14 @@ export const RecommendProductCart = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },
@@ -385,7 +486,14 @@ export const RecommendProductCart = [
             name: "Black",
             color: "black"
         }],
-        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        sizes: [
+            { name: "S", quantity: "1" },
+            { name: "M", quantity: "1" },
+            { name: "L", quantity: "1" },
+            { name: "XL", quantity: "1" },
+            { name: "2XL", quantity: "1" },
+            { name: "3XL", quantity: "1" }
+        ],
         quantity: 10,
         tag: ""
     },

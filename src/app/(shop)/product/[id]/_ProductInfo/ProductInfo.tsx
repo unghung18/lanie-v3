@@ -18,8 +18,8 @@ const ProductInfo = ({ product }: {
     product: ProductProps;
 }) => {
     const [quantity, setQuantity] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(undefined);
-    const [selectedSize, setSelectedSize] = useState("S");
+    const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+    const [selectedSize, setSelectedSize] = useState<string | undefined>(undefined);
 
     const dispatch = useAppDispatch();
 
@@ -39,8 +39,8 @@ const ProductInfo = ({ product }: {
         dispatch(addItem(
             {
                 ...product,
-                selectedColor: selectedColor ? selectedColor : product?.colors[0].name,
-                selectedSize: selectedSize,
+                selectedColor: selectedColor && selectedColor,
+                selectedSize: selectedSize && selectedSize,
                 selectedQuantity: quantity
             }
         ))
@@ -75,13 +75,13 @@ const ProductInfo = ({ product }: {
             <div className='product-info__color'>
                 <div className="product-info__color-heading">
                     <span>Màu sắc:  </span>
-                    <span><strong>{selectedColor ? selectedColor : product?.colors[0].name}</strong></span>
+                    <span><strong>{selectedColor && selectedColor} </strong></span>
                 </div>
                 <ul className='product-info__color-list'>
                     {
                         product?.colors.map((color, index) => (
                             <li key={index} style={{ backgroundColor: `${color.color}`, width: "40px", height: "40px", borderRadius: "50%" }} onClick={() => setSelectedColor(color.name)}>
-                                {(selectedColor ? selectedColor : product?.colors[0].name) == color.name && <IoMdCheckmark color='#fff' size={20} />}
+                                {selectedColor && selectedColor == color.name && <IoMdCheckmark color='#fff' size={20} />}
                             </li>
                         ))
                     }
@@ -90,6 +90,7 @@ const ProductInfo = ({ product }: {
 
             <div className='product-info__size'>
                 <div className="product-info__size-heading">
+                    {selectedSize == undefined && <div>Kích cỡ:</div>}
                     {selectedSize == "S" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m50 - 1m60 | 45kg - 50kg)</span></div>}
                     {selectedSize == "M" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 51kg - 55kg)</span></div>}
                     {selectedSize == "L" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 56kg - 60kg)</span></div>}
@@ -101,8 +102,8 @@ const ProductInfo = ({ product }: {
                 <ul className='product-info__size-list'>
                     {
                         product?.sizes.map((size, index) => (
-                            <li key={index} onClick={() => setSelectedSize(size)} className={`${selectedSize == size && "active"}`}>
-                                {size}
+                            <li key={index} onClick={() => setSelectedSize(size.name)} className={`${selectedSize && selectedSize == size.name && "active"}`}>
+                                {size.name}
                             </li>
                         ))
                     }
@@ -119,7 +120,14 @@ const ProductInfo = ({ product }: {
                         <span>{quantity}</span>
                         <FaPlus onClick={() => setQuantity(prev => prev + 1)} style={{ cursor: "pointer" }} />
                     </div>
-                    <div className='button' style={{ display: "flex", alignItems: "center" }} onClick={() => handleAddCart()}><MdOutlineShoppingBag /><span>Thêm vào giỏ hàng</span></div>
+                    {selectedColor ?
+                        selectedSize ?
+                            <div className='button' style={{ gap: "4px" }} onClick={() => handleAddCart()}><MdOutlineShoppingBag /><span>Thêm vào giỏ hàng</span></div>
+                            :
+                            <div className='button' style={{ gap: "4px", opacity: "0.7", pointerEvents: "none" }}><MdOutlineShoppingBag /><span>Chọn kích cỡ</span></div>
+                        :
+                        <div className='button' style={{ gap: "4px", opacity: "0.7", pointerEvents: "none" }}><MdOutlineShoppingBag /><span>Chọn màu sắc</span></div>
+                    }
                 </div>
             </div>
 
