@@ -32,7 +32,6 @@ export const collectionData = [
     }
 ]
 
-
 export const productData = [
     {
         _id: "1",
@@ -380,6 +379,44 @@ export const productData = [
     }
 ]
 
+export const colorData = [
+    {
+        _id: "1",
+        name: "Pink",
+        color: "rgb(244 197 191)"
+    },
+    {
+        _id: "2",
+        name: "Red",
+        color: "rgb(219 68 68)"
+    },
+    {
+        _id: "3",
+        name: "Green",
+        color: "rgb(210 239 154)"
+    },
+    {
+        _id: "4",
+        name: "Yellow",
+        color: "rgb(236 176 24)"
+    },
+    {
+        _id: "5",
+        name: "Purple",
+        color: "rgb(134 132 212)"
+    },
+    {
+        _id: "6",
+        name: "Black",
+        color: "rgb(31 31 31)"
+    },
+    {
+        _id: "7",
+        name: "White",
+        color: "rgb(246 239 221)"
+    }
+]
+
 export const RecommendProductCart = [
     {
         _id: "1",
@@ -518,4 +555,47 @@ export const couponData = [
         minimum: 599000,
         code: "LN32024"
     }
+]
+
+export const categoryProductPage = [
+    {
+        _id: "1",
+        name: "T-Shirt",
+        quantity: 12,
+    },
+    {
+        _id: "2",
+        name: "Dress",
+        quantity: 3,
+    },
+    {
+        _id: "3",
+        name: "Top",
+        quantity: 4,
+    },
+    {
+        _id: "4",
+        name: "Shirt",
+        quantity: 8,
+    },
+    {
+        _id: "5",
+        name: "Underwear",
+        quantity: 5,
+    },
+    {
+        _id: "6",
+        name: "Swimwear",
+        quantity: 4,
+    },
+    {
+        _id: "7",
+        name: "Sets",
+        quantity: 4,
+    },
+    {
+        _id: "8",
+        name: "Accessories",
+        quantity: 6,
+    },
 ]

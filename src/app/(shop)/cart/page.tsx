@@ -24,21 +24,47 @@ const Page = () => {
 
     const handleApplyInputCode = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.code == "Enter") {
+            var validCoupon = false;
             for (const item of couponData) {
                 if (item.code === couponCode) {
-                    setDiscountCost(item);
+                    if (totalAmount >= item.minimum) {
+                        setDiscountCost(item);
+                        setCouponCode("");
+                    }
+                    else {
+                        alert(`Đơn hàng phải tối thiểu ${item.minimum.toLocaleString()}đ`)
+                    }
+                    validCoupon = true;
+                    break;
                 }
+
+            }
+
+            if (!validCoupon) {
+                setCouponCode("");
+                alert("Mã giảm giá không đúng");
             }
         }
     }
 
-
-
     const handleApplyEntertCode = () => {
+        var validCoupon = false;
         for (const item of couponData) {
             if (item.code === couponCode) {
-                setDiscountCost(item);
+                if (totalAmount >= item.minimum) {
+                    setDiscountCost(item);
+                    setCouponCode("");
+                }
+                else {
+                    alert(`Đơn hàng phải tối thiểu ${item.minimum.toLocaleString()}đ`)
+                }
+                validCoupon = true;
+                break;
             }
+        }
+        if (!validCoupon) {
+            setCouponCode("");
+            alert("Mã giảm giá không đúng");
         }
     }
 
@@ -132,7 +158,7 @@ const Page = () => {
                         </div>
                     </div>
                     <div className='input-discount'>
-                        <input type="text" placeholder='Nhập mã voucher của bạn !' name='couponcode' onChange={handleChangeInputCoupon} onKeyDown={handleApplyInputCode} />
+                        <input type="text" placeholder='Nhập mã voucher của bạn !' name='couponcode' value={couponCode} onChange={handleChangeInputCoupon} onKeyDown={handleApplyInputCode} />
                         <div className='button-main' onClick={() => handleApplyEntertCode()}>NHẬP MÃ</div>
                     </div>
                     <div className='list-vouchers'>

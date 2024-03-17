@@ -7,12 +7,15 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addWishlistItem } from '@/redux/slices/wishlistSlice';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
 import { toggleQuickview } from '@/redux/slices/toggleQuickviewSlice';
+import Link from "next/link";
 
 const ProductCard = ({ product }: {
     product: ProductProps
 }) => {
 
     const { wishlistItems } = useAppSelector(state => state.wishlist);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
 
     function isExits() {
         for (const item of wishlistItems) {
@@ -36,9 +39,11 @@ const ProductCard = ({ product }: {
             product: product
         }))
     }
+    function handleAdvise(event: React.MouseEvent<HTMLElement>) {
+        event.stopPropagation();
+    }
 
-    const dispatch = useAppDispatch();
-    const router = useRouter();
+
 
     return (
         <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
@@ -60,7 +65,7 @@ const ProductCard = ({ product }: {
                 </div>
                 <div className='product__item--thumbs-buttons'>
                     <div onClick={handleQuickview}>Xem nhanh</div>
-                    <div>Tư vấn thêm</div>
+                    <Link href="https://www.facebook.com/hung.ung.9638" target="_blank" onClick={handleAdvise}>Tư vấn thêm</Link>
                 </div>
             </div>
             <div className="product__item--info">
@@ -73,8 +78,8 @@ const ProductCard = ({ product }: {
                     }
                 </div>
                 <div className='product__item--info-price'>
-                    <span> {product.price}₫</span>
-                    <span> {product.price}₫</span>
+                    <span> {product.price.toLocaleString()}₫</span>
+                    <span> {product.price.toLocaleString()}₫</span>
                     <span>-{product.sale}%</span>
                 </div>
             </div>

@@ -6,19 +6,20 @@ import { productData } from '../../../../../contants';
 import ProductInfo from './_ProductInfo/ProductInfo';
 import SliderSimilarProduct from '@/components/Slider/SliderSimilarProduct/SliderSimilarProduct';
 import RateReadOnly from '@/components/RateReadOnly';
+import { getOneProducts } from '@/api/LanieApi';
 
-export default function Page({ params }: {
+async function getData(id: string) {
+    const res = await getOneProducts(id);
+    return res.data
+}
+
+export default async function Page({ params }: {
     params: {
         id: string
     }
 }) {
 
-    const product = productData.filter((item) => {
-        if (item._id == params.id) {
-            return item._id
-        }
-        return null;
-    });
+    const product = await getData(params.id);
 
     return (
         <div className='product-detail'>
@@ -32,8 +33,8 @@ export default function Page({ params }: {
                 </div>
             </div>
             <div className="product-detail__container container">
-                <ImageGallery imageUrls={product[0]?.images} />
-                <ProductInfo product={product[0]} />
+                <ImageGallery imageUrls={product?.images} />
+                <ProductInfo product={product} />
             </div>
 
             <div className='product-detail__review container'>

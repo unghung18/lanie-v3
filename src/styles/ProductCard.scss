@@ -135,6 +135,17 @@
                 text-transform: uppercase;
                 text-align: center;
             }
+
+            a {
+                background-color: #fff;
+                border-radius: 24px;
+                padding: 8px 10px;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                text-transform: uppercase;
+                text-align: center;
+            }
         }
     }
 
@@ -192,7 +203,7 @@
                 font-size: 16px;
                 line-height: 24px;
                 color: #070707;
-                font-weight: bold;
+                font-weight: 600;
 
                 @include sm {
                     font-size: 14px;
@@ -222,8 +233,7 @@
                 border-radius: 9999px;
 
                 @include sm {
-                    font-size: 13px;
-                    line-height: 20px;
+                    display: none;
                 }
             }
         }

@@ -1,16 +1,136 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../styles/product/product.scss';
 import { Slider } from 'antd';
 import { FaChevronDown } from "react-icons/fa6";
-import { productData } from '../../../../contants';
+import { categoryProductPage, colorData, productData } from '../../../../contants';
 import ProductCard from '@/components/ProductCard';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { IoClose } from "react-icons/io5";
+import { ProductProps } from '@/types/types';
+import { getProducts } from '@/api/LanieApi';
+
 
 const Page = () => {
 
-    const product = productData;
     const [selectedLayout, setSelectedLayout] = useState(3);
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState<ProductProps[]>([]);
+
+    const router = useRouter();
+    const SearchParams = useSearchParams();
+
+    const category = SearchParams.get("category");
+    const size = SearchParams.get("size");
+    const color = SearchParams.get("color");
+    const sale = SearchParams.get("sale");
+
+    let queryParams: any;
+
+    const handleCategory = (cate: string) => {
+        if (typeof window !== "undefined") {
+            queryParams = new URLSearchParams(window.location.search);
+        }
+
+        if (queryParams.has("category")) {
+            if (queryParams.get("category") == cate) {
+                queryParams.delete("category");
+            }
+            else {
+                queryParams.set("category", cate);
+            }
+        } else {
+            queryParams.append("category", cate);
+        }
+
+        const path = window.location.pathname + "?" + queryParams.toString();
+        router.push(path, { scroll: false });
+    }
+
+    const handleSize = (sz: string) => {
+        if (typeof window !== "undefined") {
+            queryParams = new URLSearchParams(window.location.search);
+        }
+
+        if (queryParams.has("size")) {
+            if (queryParams.get("size") == sz) {
+                queryParams.delete("size");
+            }
+            else {
+                queryParams.set("size", sz);
+            }
+        } else {
+            queryParams.append("size", sz);
+        }
+
+        const path = window.location.pathname + "?" + queryParams.toString();
+        router.push(path, { scroll: false });
+    }
+
+    const handleColor = (cl: string) => {
+        if (typeof window !== "undefined") {
+            queryParams = new URLSearchParams(window.location.search);
+        }
+
+        if (queryParams.has("color")) {
+            if (queryParams.get("color") == cl) {
+                queryParams.delete("color");
+            }
+            else {
+                queryParams.set("color", cl);
+            }
+        } else {
+            queryParams.append("color", cl);
+        }
+
+        const path = window.location.pathname + "?" + queryParams.toString();
+        router.push(path, { scroll: false });
+    }
+
+    const handleCheckSale = () => {
+
+        if (typeof window !== "undefined") {
+            queryParams = new URLSearchParams(window.location.search);
+        }
+
+        if (queryParams.has("sale")) {
+            queryParams.delete("sale");
+        } else {
+            queryParams.append("sale", "true");
+        }
+
+        const path = window.location.pathname + "?" + queryParams.toString();
+        router.push(path, { scroll: false });
+    }
+
+    const getAllProducts = async () => {
+        setLoading(true);
+        try {
+            if (typeof window !== "undefined") {
+                queryParams = new URLSearchParams(window.location.search);
+            }
+
+            const res = await getProducts(queryParams.toString())
+            console.log(res.data);
+            if (res.error) {
+                alert(res.error.message)
+            }
+
+            else {
+                setProducts(res.data)
+            }
+
+            setLoading(false);
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    useEffect(() => {
+        getAllProducts();
+    }, [category, sale, color, size]);
+
     return (
         <div className='product'>
             <div className='breadcum'>
@@ -27,48 +147,23 @@ const Page = () => {
                     <div className="filter-type">
                         <div className="filter-heading">Product Type</div>
                         <ul className='list-type'>
-                            <li className='list-type__item'>
-                                <span>T-Shirt</span>
-                                <span>(12)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Dress</span>
-                                <span>(3)</span></li>
-                            <li className='list-type__item'>
-                                <span>Top</span>
-                                <span>(4)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Shirt</span>
-                                <span>(8)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Underwear</span>
-                                <span>(5)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Swimwear</span>
-                                <span>(4)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Sets</span>
-                                <span>(4)</span>
-                            </li>
-                            <li className='list-type__item'>
-                                <span>Accessories</span>
-                                <span>(6)</span>
-                            </li>
+                            {categoryProductPage.map((item) => (
+                                <li className={`list-type__item ${category == item.name.toLocaleLowerCase() ? "active" : ""}`} key={item._id} onClick={() => handleCategory(item.name.toLocaleLowerCase())}>
+                                    <span>{item.name}</span>
+                                    <span>({item.quantity})</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="filter-size">
                         <div className="filter-heading">Size</div>
                         <ul className='list-size'>
-                            <li className='list-size__item'>S</li>
-                            <li className='list-size__item'>M</li>
-                            <li className='list-size__item'>L</li>
-                            <li className='list-size__item'>XL</li>
-                            <li className='list-size__item'>2XL</li>
-                            <li className='list-size__item'>3XL</li>
+                            <li className={`list-size__item ${size == "s" ? "active" : ""}`} onClick={() => handleSize('s')}>S</li>
+                            <li className={`list-size__item ${size == "m" ? "active" : ""}`} onClick={() => handleSize('m')}>M</li>
+                            <li className={`list-size__item ${size == "l" ? "active" : ""}`} onClick={() => handleSize('l')}>L</li>
+                            <li className={`list-size__item ${size == "xl" ? "active" : ""}`} onClick={() => handleSize('xl')}>XL</li>
+                            <li className={`list-size__item ${size == "2xl" ? "active" : ""}`} onClick={() => handleSize('2xl')}>2XL</li>
+                            <li className={`list-size__item ${size == "3xl" ? "active" : ""}`} onClick={() => handleSize('3xl')}>3XL</li>
                         </ul>
                     </div>
                     <div className="filter-price">
@@ -80,34 +175,12 @@ const Page = () => {
                     <div className="filter-color">
                         <div className="filter-heading">Colors</div>
                         <ul className='list-color'>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(244 197 191)" }}></span>
-                                <span>Pink</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(219 68 68)" }}></span>
-                                <span>Red</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(210 239 154)" }}></span>
-                                <span>Green</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(236 176 24)" }}></span>
-                                <span>Yellow</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(134 132 212)" }}></span>
-                                <span>Purple</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(31 31 31)" }}></span>
-                                <span>Black</span>
-                            </li>
-                            <li className='list-color__item'>
-                                <span style={{ backgroundColor: "rgb(246 239 221)" }}></span>
-                                <span>White</span>
-                            </li>
+                            {colorData.map((item) => (
+                                <li className={`list-color__item ${color == item._id ? "active" : ""}`} key={item._id} onClick={() => handleColor(item._id.toLocaleLowerCase())}>
+                                    <span style={{ backgroundColor: `${item.color}` }}></span>
+                                    <span>{item.name}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     {/*  <div className="filter-brand">
@@ -131,7 +204,7 @@ const Page = () => {
                                 </div>
                             </div>
                             <div className='check-sale'>
-                                <input type="checkbox" name="filtersale" id='filtersale' style={{ display: "none" }} />
+                                <input type="checkbox" name="filtersale" id='filtersale' style={{ display: "none" }} checked={sale ? true : false} onChange={handleCheckSale} />
                                 <label htmlFor="filtersale">Show only products on sale</label>
                             </div>
                         </div>
@@ -151,18 +224,46 @@ const Page = () => {
                         </div>
                     </div>
                     <div className='product-list__filters'>
-                        <div className='total-product'>40 kết quả tìm kiếm</div>
-                        <div>a</div>
-                        <div>a</div>
+                        <div className='total-product'>40 <span style={{ color: "rgb(105 108 112)" }}>kết quả tìm kiếm</span></div>
+                        <div className='line'></div>
+                        <div className='list__filters'>
+                            {category &&
+                                <div className='item' onClick={() => handleCategory(category)}>
+                                    <IoClose size={18} />
+                                    <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                                </div>}
+                            {size &&
+                                <div className='item' onClick={() => handleSize(size)}>
+                                    <IoClose size={18} />
+                                    <span>{size.toLocaleUpperCase()}</span>
+                                </div>}
+                            {color &&
+                                <div className='item' onClick={() => handleColor(color)}>
+                                    <IoClose size={18} />
+                                    <span>{color}</span>
+                                </div>}
+                        </div>
+                        {
+                            category || color || size ?
+                                <div className='clear-button' onClick={() => router.push("/product", { scroll: false })}>
+                                    <IoClose size={18} />
+                                    <span>Reset</span>
+                                </div>
+                                :
+                                <div></div>
+                        }
                     </div>
                     <div className='product-list__main' style={{ gridTemplateColumns: `repeat(${selectedLayout}, 1fr)` }}>
-                        {product.slice(0, 12).map((item) => (
+                        {products.length > 0 ? products.slice(0, 12).map((item) => (
                             <ProductCard product={item} key={item._id} />
-                        ))}
+                        ))
+                            :
+                            <div className='product-list__main'> Không tìm thấy sản phẩm nào</div>
+                        }
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
