@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import '../../../styles/product/product.scss';
 import { Slider } from 'antd';
 import { FaChevronDown } from "react-icons/fa6";
@@ -132,138 +132,140 @@ const Page = () => {
     }, [category, sale, color, size]);
 
     return (
-        <div className='product'>
-            <div className='breadcum'>
-                <div className='breadcum__container container'>
-                    <span>TRANG CHỦ</span>
-                    <span>/</span>
-                    <span>SẢN PHẨM</span>
+        <Suspense>
+            <div className='product'>
+                <div className='breadcum'>
+                    <div className='breadcum__container container'>
+                        <span>TRANG CHỦ</span>
+                        <span>/</span>
+                        <span>SẢN PHẨM</span>
+                    </div>
                 </div>
-            </div>
-            <img src="/banner-product.webp" alt="outfit of the day" />
+                <img src="/banner-product.webp" alt="outfit of the day" />
 
-            <div className='product__container container'>
-                <div className='product-sidebar'>
-                    <div className="filter-type">
-                        <div className="filter-heading">Product Type</div>
-                        <ul className='list-type'>
-                            {categoryProductPage.map((item) => (
-                                <li className={`list-type__item ${category == item.name.toLocaleLowerCase() ? "active" : ""}`} key={item._id} onClick={() => handleCategory(item.name.toLocaleLowerCase())}>
-                                    <span>{item.name}</span>
-                                    <span>({item.quantity})</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="filter-size">
-                        <div className="filter-heading">Size</div>
-                        <ul className='list-size'>
-                            <li className={`list-size__item ${size == "s" ? "active" : ""}`} onClick={() => handleSize('s')}>S</li>
-                            <li className={`list-size__item ${size == "m" ? "active" : ""}`} onClick={() => handleSize('m')}>M</li>
-                            <li className={`list-size__item ${size == "l" ? "active" : ""}`} onClick={() => handleSize('l')}>L</li>
-                            <li className={`list-size__item ${size == "xl" ? "active" : ""}`} onClick={() => handleSize('xl')}>XL</li>
-                            <li className={`list-size__item ${size == "2xl" ? "active" : ""}`} onClick={() => handleSize('2xl')}>2XL</li>
-                            <li className={`list-size__item ${size == "3xl" ? "active" : ""}`} onClick={() => handleSize('3xl')}>3XL</li>
-                        </ul>
-                    </div>
-                    <div className="filter-price">
-                        <div className="filter-heading">Price</div>
-                        <div>
-                            <Slider range defaultValue={[0, 50]} />
+                <div className='product__container container'>
+                    <div className='product-sidebar'>
+                        <div className="filter-type">
+                            <div className="filter-heading">Product Type</div>
+                            <ul className='list-type'>
+                                {categoryProductPage.map((item) => (
+                                    <li className={`list-type__item ${category == item.name.toLocaleLowerCase() ? "active" : ""}`} key={item._id} onClick={() => handleCategory(item.name.toLocaleLowerCase())}>
+                                        <span>{item.name}</span>
+                                        <span>({item.quantity})</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    </div>
-                    <div className="filter-color">
-                        <div className="filter-heading">Colors</div>
-                        <ul className='list-color'>
-                            {colorData.map((item) => (
-                                <li className={`list-color__item ${color == item._id ? "active" : ""}`} key={item._id} onClick={() => handleColor(item._id.toLocaleLowerCase())}>
-                                    <span style={{ backgroundColor: `${item.color}` }}></span>
-                                    <span>{item.name}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/*  <div className="filter-brand">
+                        <div className="filter-size">
+                            <div className="filter-heading">Size</div>
+                            <ul className='list-size'>
+                                <li className={`list-size__item ${size == "s" ? "active" : ""}`} onClick={() => handleSize('s')}>S</li>
+                                <li className={`list-size__item ${size == "m" ? "active" : ""}`} onClick={() => handleSize('m')}>M</li>
+                                <li className={`list-size__item ${size == "l" ? "active" : ""}`} onClick={() => handleSize('l')}>L</li>
+                                <li className={`list-size__item ${size == "xl" ? "active" : ""}`} onClick={() => handleSize('xl')}>XL</li>
+                                <li className={`list-size__item ${size == "2xl" ? "active" : ""}`} onClick={() => handleSize('2xl')}>2XL</li>
+                                <li className={`list-size__item ${size == "3xl" ? "active" : ""}`} onClick={() => handleSize('3xl')}>3XL</li>
+                            </ul>
+                        </div>
+                        <div className="filter-price">
+                            <div className="filter-heading">Price</div>
+                            <div>
+                                <Slider range defaultValue={[0, 50]} />
+                            </div>
+                        </div>
+                        <div className="filter-color">
+                            <div className="filter-heading">Colors</div>
+                            <ul className='list-color'>
+                                {colorData.map((item) => (
+                                    <li className={`list-color__item ${color == item._id ? "active" : ""}`} key={item._id} onClick={() => handleColor(item._id.toLocaleLowerCase())}>
+                                        <span style={{ backgroundColor: `${item.color}` }}></span>
+                                        <span>{item.name}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        {/*  <div className="filter-brand">
                         <div className="filter-heading">Brands</div>
                     </div> */}
-                </div>
-                <div className='product-list'>
-                    <div className='product-list__heading'>
-                        <div className='left' style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                            <div className='choose-layout' >
-                                <div className={`choose-layout__three ${selectedLayout == 3 && "active"}`} onClick={() => setSelectedLayout(3)}>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div className={`choose-layout__four ${selectedLayout == 4 && "active"}`} onClick={() => setSelectedLayout(4)}>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div className='check-sale'>
-                                <input type="checkbox" name="filtersale" id='filtersale' style={{ display: "none" }} checked={sale ? true : false} onChange={handleCheckSale} />
-                                <label htmlFor="filtersale">Show only products on sale</label>
-                            </div>
-                        </div>
-                        <div className='right'>
-                            <div className='select-block'>
-                                <select name="select-filter" id="select-filter" defaultValue="all">
-                                    <option value="all">Tất cả</option>
-                                    <option value="soldQuantityHighToLow">Bán chạy nhất</option>
-                                    <option value="discountHighToLow">Sản phẩm mới nhất</option>
-                                    <option value="priceHighToLow">Giá từ cao đến thấp</option>
-                                    <option value="priceLowToHigh">Giá từ thấp đến cao</option>
-                                </select>
-                                <div className='select-arrow'>
-                                    <FaChevronDown size={12} />
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div className='product-list__filters'>
-                        <div className='total-product'>40 <span style={{ color: "rgb(105 108 112)" }}>kết quả tìm kiếm</span></div>
-                        <div className='line'></div>
-                        <div className='list__filters'>
-                            {category &&
-                                <div className='item' onClick={() => handleCategory(category)}>
-                                    <IoClose size={18} />
-                                    <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
-                                </div>}
-                            {size &&
-                                <div className='item' onClick={() => handleSize(size)}>
-                                    <IoClose size={18} />
-                                    <span>{size.toLocaleUpperCase()}</span>
-                                </div>}
-                            {color &&
-                                <div className='item' onClick={() => handleColor(color)}>
-                                    <IoClose size={18} />
-                                    <span>{color}</span>
-                                </div>}
-                        </div>
-                        {
-                            category || color || size ?
-                                <div className='clear-button' onClick={() => router.push("/product", { scroll: false })}>
-                                    <IoClose size={18} />
-                                    <span>Reset</span>
+                    <div className='product-list'>
+                        <div className='product-list__heading'>
+                            <div className='left' style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                                <div className='choose-layout' >
+                                    <div className={`choose-layout__three ${selectedLayout == 3 && "active"}`} onClick={() => setSelectedLayout(3)}>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div className={`choose-layout__four ${selectedLayout == 4 && "active"}`} onClick={() => setSelectedLayout(4)}>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
                                 </div>
+                                <div className='check-sale'>
+                                    <input type="checkbox" name="filtersale" id='filtersale' style={{ display: "none" }} checked={sale ? true : false} onChange={handleCheckSale} />
+                                    <label htmlFor="filtersale">Show only products on sale</label>
+                                </div>
+                            </div>
+                            <div className='right'>
+                                <div className='select-block'>
+                                    <select name="select-filter" id="select-filter" defaultValue="all">
+                                        <option value="all">Tất cả</option>
+                                        <option value="soldQuantityHighToLow">Bán chạy nhất</option>
+                                        <option value="discountHighToLow">Sản phẩm mới nhất</option>
+                                        <option value="priceHighToLow">Giá từ cao đến thấp</option>
+                                        <option value="priceLowToHigh">Giá từ thấp đến cao</option>
+                                    </select>
+                                    <div className='select-arrow'>
+                                        <FaChevronDown size={12} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='product-list__filters'>
+                            <div className='total-product'>40 <span style={{ color: "rgb(105 108 112)" }}>kết quả tìm kiếm</span></div>
+                            <div className='line'></div>
+                            <div className='list__filters'>
+                                {category &&
+                                    <div className='item' onClick={() => handleCategory(category)}>
+                                        <IoClose size={18} />
+                                        <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                                    </div>}
+                                {size &&
+                                    <div className='item' onClick={() => handleSize(size)}>
+                                        <IoClose size={18} />
+                                        <span>{size.toLocaleUpperCase()}</span>
+                                    </div>}
+                                {color &&
+                                    <div className='item' onClick={() => handleColor(color)}>
+                                        <IoClose size={18} />
+                                        <span>{color}</span>
+                                    </div>}
+                            </div>
+                            {
+                                category || color || size ?
+                                    <div className='clear-button' onClick={() => router.push("/product", { scroll: false })}>
+                                        <IoClose size={18} />
+                                        <span>Reset</span>
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
+                        </div>
+                        <div className='product-list__main' style={{ gridTemplateColumns: `repeat(${selectedLayout}, 1fr)` }}>
+                            {products.length > 0 ? products.slice(0, 12).map((item) => (
+                                <ProductCard product={item} key={item._id} />
+                            ))
                                 :
-                                <div></div>
-                        }
-                    </div>
-                    <div className='product-list__main' style={{ gridTemplateColumns: `repeat(${selectedLayout}, 1fr)` }}>
-                        {products.length > 0 ? products.slice(0, 12).map((item) => (
-                            <ProductCard product={item} key={item._id} />
-                        ))
-                            :
-                            <div className='product-list__main'> Không tìm thấy sản phẩm nào</div>
-                        }
+                                <div className='product-list__main'> Không tìm thấy sản phẩm nào</div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div >
+            </div >
+        </Suspense>
     )
 }
 
