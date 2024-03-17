@@ -61,10 +61,10 @@ export const productData = [
     },
     {
         _id: "2",
-        category: "Dress",
-        title: "Mesh Shirt",
+        category: "Áo dài",
+        title: "Áo dài nhung đáp hoa sen",
         images: [
-            "/product/product1.png", "/product/product2.png", "/product/product3.png"
+            "https://res.cloudinary.com/dwmz39exs/image/upload/v1698756662/ywhd7z0phvbo1trm10sm.webp", "https://res.cloudinary.com/dwmz39exs/image/upload/v1698756673/kay8pqdezgvm24ubjh5a.webp", "https://res.cloudinary.com/dwmz39exs/image/upload/v1698756688/p4stoug5gf4ihcie8obu.webp", "https://res.cloudinary.com/dwmz39exs/image/upload/v1698756696/fp5y59vrrld2g733gtpp.webp"
         ],
         comments: [],
         price: 150000,
@@ -497,4 +497,25 @@ export const RecommendProductCart = [
         totalQuantity: 10,
         tag: ""
     },
+]
+
+export const couponData = [
+    {
+        _id: "1",
+        discount: 30,
+        minimum: 320000,
+        code: "LN12024"
+    },
+    {
+        _id: "2",
+        discount: 40,
+        minimum: 499000,
+        code: "LN22024"
+    },
+    {
+        _id: "3",
+        discount: 50,
+        minimum: 599000,
+        code: "LN32024"
+    }
 ]

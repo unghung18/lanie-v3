@@ -6,14 +6,21 @@ import { IoClose } from "react-icons/io5";
 import { BsTrash } from "react-icons/bs";
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
-import { deleteItem } from '@/redux/slices/cartSlice';
+import { addItem, deleteItem } from '@/redux/slices/cartSlice';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const ModalCart = ({ open }: {
     open: boolean;
 }) => {
 
     const { cartItems, totalAmount, totalQuantity } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    function handleShowCart() {
+        router.push("/cart");
+        dispatch(toggle(false));
+    }
 
     return (
         <div className={`overlay ${open ? "active" : ""}`}>
@@ -39,7 +46,12 @@ const ModalCart = ({ open }: {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='cart__left-list-item-button'>
+                                <div className='cart__left-list-item-button' onClick={() => dispatch(addItem({
+                                    ...item,
+                                    selectedColor: item.colors[0].name,
+                                    selectedSize: item.sizes[2].name,
+                                    selectedQuantity: 1
+                                }))}>
                                     <SlHandbag />
                                 </div>
                             </li>
@@ -84,7 +96,7 @@ const ModalCart = ({ open }: {
                             <span>{totalAmount.toLocaleString()}₫</span>
                         </div>
                         <div className='buttons'>
-                            <div className='button-main'>GIỎ HÀNG</div>
+                            <div className='button-main' onClick={handleShowCart}>GIỎ HÀNG</div>
                             <div className='button-main'>THANH TOÁN</div>
                         </div>
                         <div className='continue-shopping-btn'><Link href="/product" onClick={() => dispatch(toggle(false))}>TIẾP TỤC MUA HÀNG</Link></div>

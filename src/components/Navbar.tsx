@@ -13,6 +13,7 @@ import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
 
 const Navbar = () => {
     const { toggleCart } = useAppSelector((state) => state.toggleCart)
+    const { totalQuantity } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch();
     const headerRef = useRef<HTMLInputElement | null>(null);
 
@@ -146,8 +147,9 @@ const Navbar = () => {
                     <div style={{ cursor: "pointer" }} onClick={() => dispatch(toggleWishlist(true))}>
                         <IoMdHeartEmpty size={24} />
                     </div>
-                    <div style={{ cursor: "pointer" }}>
-                        <BsHandbag size={24} onClick={() => dispatch(toggle(true))} />
+                    <div className='header__actions-cart'>
+                        <span>{totalQuantity}</span>
+                        <BsHandbag className='icon' size={24} onClick={() => dispatch(toggle(true))} />
                     </div>
                 </div>
             </div>

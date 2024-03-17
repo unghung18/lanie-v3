@@ -1,0 +1,463 @@
+@use '../../scss/' as *;
+
+.cart-page__content {
+    padding: 4rem 1rem;
+    gap: 3.5rem;
+    display: flex;
+
+    @include pc-1280 {
+        flex-direction: column;
+    }
+
+    &>.table {
+        width: 66.666667%;
+
+        @include pc-1280 {
+            width: 100%;
+        }
+
+        &>.time {
+            display: flex;
+            align-items: center;
+            background-color: rgb(210 239 154);
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+
+            &>span {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: 400;
+
+                @include md {
+                    font-size: 13px;
+                    line-height: 20px;
+                }
+            }
+        }
+
+        &>.tow-bar {
+            margin-top: 1.25rem;
+
+            &>.bar {
+                margin-top: 1rem;
+                height: 4px;
+                position: relative;
+                background-color: rgb(0 0 0 / 15%);
+
+                &>.line {
+                    position: absolute;
+                    left: 0;
+                    height: 4px;
+                    background-color: #3dab25;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        right: -8px;
+                        top: -6px;
+                        width: 1rem;
+                        height: 1rem;
+                        border-radius: 50%;
+                        background-color: #3dab25;
+                    }
+                }
+            }
+        }
+
+        &>.table-main {
+            margin-top: 1.75rem;
+            width: 100%;
+
+            @include sm {
+                overflow-x: auto;
+                margin-top: 1.25rem;
+            }
+
+            &>.table-main__container {
+                width: 100%;
+
+                @include sm {
+                    width: 600px;
+                    max-width: 600px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+
+                &>.table-main__heading {
+                    padding: 1rem 0;
+                    background-color: rgb(247 247 247);
+
+                }
+
+                &>.table-main__content {
+                    &>.item {
+                        display: flex;
+                        padding-bottom: 1.25rem;
+                        border-bottom: 1px solid rgb(233 233 233);
+                        margin-top: 1.75rem;
+
+                        @include md {
+                            margin-top: 1.25rem;
+                        }
+
+                        &>.item-product {
+                            display: flex;
+                            align-items: center;
+                            width: 47%;
+                            gap: 1.5rem;
+
+                            &>.item-product__image {
+                                width: 100px;
+
+                                &>img {
+                                    width: 100%;
+                                    aspect-ratio: 3/4;
+                                    object-fit: cover;
+                                    border-radius: 8px;
+                                }
+
+                                @include md {
+                                    width: 80px;
+                                }
+                            }
+
+                            &>.item-product__name {
+                                &>div:first-child {
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    font-weight: 500;
+                                    text-transform: capitalize;
+
+                                    @include md {
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                    }
+                                }
+
+                                &>div:last-child {
+                                    color: rgb(160, 160, 160);
+                                    text-transform: capitalize;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+
+                        &>.item-price {
+                            width: 9.333333%;
+                            @include flex(center, center);
+                        }
+
+                        &>.item-quantity {
+                            width: 17.666667%;
+                            @include flex(center, center);
+
+                            &>div {
+                                width: 100px;
+                                padding: 12px;
+                                background-color: rgb(247 247 247);
+                                border: 1px solid rgb(233 233 233);
+                                border-radius: 8px;
+                                @include flex(space-between, center);
+
+                                @include md {
+                                    width: 80px;
+                                }
+
+                                @include md {
+                                    padding: 8px
+                                }
+
+                                &>span {
+                                    width: 15px;
+                                }
+                            }
+                        }
+
+                        &>.item-totalprice {
+                            @include flex(center, center);
+                            width: 17.666667%;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        &>.input-discount {
+            margin-top: 1.75rem;
+            height: 3rem;
+            position: relative;
+
+            @include md {
+                margin-top: 1.25rem;
+            }
+
+            &>input {
+                padding-right: 3.5rem;
+                padding-left: 1rem;
+                border: 1px solid rgb(233 233 233);
+                border-radius: 8px;
+                width: 100%;
+                height: 100%;
+                font-size: 16px;
+                background-color: rgb(246 246 246);
+                transition: border-color .3s ease;
+
+                &:focus {
+                    border: 1px solid #1f1f1f;
+                }
+
+                @include md {
+                    font-size: 14px;
+                }
+            }
+
+            &>div {
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                bottom: 4px;
+                background-color: #000;
+                color: #fff;
+
+                &:hover {
+                    background-color: rgb(210 239 154);
+                    color: #000;
+                }
+            }
+        }
+
+        &>.list-vouchers {
+            @include flex(center, center);
+            flex-wrap: wrap;
+            margin-top: 1.75rem;
+            gap: 1.25rem;
+
+            @include md {
+                margin-top: 1.25rem;
+            }
+
+            &>.voucher-item {
+                border: 1px solid rgb(233 233 233);
+                transition: all .3s ease;
+                padding: 0.5rem 0;
+                border-radius: 8px;
+
+                &.active {
+                    background-color: #d2ef9a;
+                    color: #000;
+                }
+
+                &>.voucher-item__header {
+                    border-bottom: 2px dashed rgb(233 233 233);
+                    padding: 0 0.75rem 0.5rem;
+                    position: relative;
+                    @include flex(space-between, center);
+                    gap: 2.5rem;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        background-color: #fff;
+                        border-right: 1px solid rgb(233 233 233);
+                        border-radius: 50%;
+                        left: -11px;
+                        bottom: -8px;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                        bottom: -8px;
+                        right: -11px;
+                        border-left: 1px solid rgb(233 233 233);
+                    }
+
+                    &>.discount {
+                        &>div {
+                            text-align: center;
+                            font-size: 14px;
+                            line-height: 22px;
+                            font-weight: 400;
+
+                            @include md {
+                                font-size: 13px;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+
+                    &>.description {
+                        &>div {
+                            text-align: center;
+                            font-size: 14px;
+                            line-height: 22px;
+                            font-weight: 400;
+
+                            @include md {
+                                font-size: 13px;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                }
+
+                &>.voucher-item__footer {
+                    @include flex(space-between, center);
+                    padding: 8px 12px 0;
+                    gap: 32px;
+
+                    &>.code {
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+
+                        @include md {
+                            font-size: 12px;
+                            line-height: 16px;
+                        }
+                    }
+
+                    &>.apply-button {
+                        font-size: .75rem;
+                        line-height: 1rem;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                        color: #fff;
+                        background-color: #000;
+                        border-radius: 12px;
+                        display: inline-block;
+                        cursor: pointer;
+                        transition: all .4s ease;
+                        padding: 4px 10px;
+
+                        &.active {
+                            background-color: #fff;
+                            color: #000;
+                            pointer-events: none;
+                        }
+
+                        @include pc-1024 {
+                            border-radius: 10px;
+                        }
+
+                        @include md {
+                            border-radius: 8px;
+                        }
+
+                        &:hover {
+                            background-color: #d2ef9a;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &>.checkout {
+        width: 33.3333%;
+        border-radius: 16px;
+        background-color: rgb(247 247 247);
+        padding: 1.5rem;
+        height: max-content;
+
+        @include pc-1280 {
+            width: 100%;
+        }
+
+        &>.heading {
+            font-weight: 600;
+            text-transform: capitalize;
+            font-size: 24px;
+            line-height: 30px;
+
+            @include pc-1024 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            @include md {
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+
+        &>.subtotal {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgb(233 233 233);
+            @include flex(space-between, center);
+
+        }
+
+        &>.discount {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgb(233 233 233);
+            @include flex(space-between, center);
+        }
+
+        &>.shipping {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgb(233 233 233);
+            @include flex(space-between, center);
+        }
+
+        &>.total {
+            @include flex(space-between, center);
+            padding: 1rem 0;
+
+            &>div {
+                font-weight: 600;
+                text-transform: capitalize;
+                font-size: 24px;
+                line-height: 30px;
+
+                @include pc-1024 {
+                    font-size: 22px;
+                    line-height: 28px;
+                }
+
+                @include md {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+            }
+        }
+
+        &>.button-block {
+            gap: 1rem;
+            margin-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+
+            &>div:first-child {
+                background-color: #000;
+                color: #fff;
+
+                &:hover {
+                    background-color: #d2ef9a;
+                    color: #000;
+                }
+            }
+
+            &>div:last-child {
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+    }
+}

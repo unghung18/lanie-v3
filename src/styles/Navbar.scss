@@ -323,6 +323,26 @@
         .header__actions {
             gap: 16px;
             @include flex(flex-start, center);
+
+            &>.header__actions-cart {
+                cursor: pointer;
+                position: relative;
+
+                &>span {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: -5px;
+                    right: -6px;
+                    background-color: #000;
+                    color: #fff;
+                    border-radius: 50%;
+                    font-size: .75rem;
+                    line-height: 1rem;
+                    @include flex(center, center);
+                }
+            }
         }
 
         .header__menu--toggle {

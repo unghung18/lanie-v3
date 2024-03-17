@@ -25,7 +25,7 @@ type initialStateProps = {
     totalAmount: number;
 }
 
-const initialState = {
+const initialState: initialStateProps = {
     cartItems: [],
     totalQuantity: 0,
     totalAmount: 0,
@@ -39,8 +39,6 @@ const cartSlice = createSlice({
         // =========== add item ============
         addItem(state: initialStateProps, action) {
             const newItem: cartItemsProps = action.payload;
-
-            console.log(newItem);
 
             const existingItem = state.cartItems.find(
                 (item) => item._id == newItem._id
@@ -58,9 +56,9 @@ const cartSlice = createSlice({
             } else {
                 existingItem.selectedSize = newItem.selectedSize
                 existingItem.selectedColor = newItem.selectedColor
-                existingItem.selectedQuantity += newItem.selectedQuantity;
+                existingItem.selectedQuantity += 1;
                 existingItem.selectedTotalPrice =
-                    Number(existingItem.selectedTotalPrice) + Number(newItem.price) * Number(newItem.selectedQuantity);
+                    Number(existingItem.selectedTotalPrice) + Number(newItem.price);
             }
 
             state.totalAmount = state.cartItems.reduce(
@@ -78,7 +76,7 @@ const cartSlice = createSlice({
             state.totalQuantity--;
 
             if (existingItem && existingItem?.selectedQuantity > 1) {
-                existingItem?.selectedQuantity - 1;
+                existingItem.selectedQuantity--
                 existingItem.selectedTotalPrice = Number(existingItem?.selectedTotalPrice) - Number(existingItem?.price);
             } else {
                 state.cartItems = state.cartItems.filter((item) => item._id !== id);

@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Instrument Sans", sans-serif;
+    /*   font-family: Arial, Helvetica, sans-serif; */
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -15,6 +16,14 @@
 
 body {
     position: relative;
+}
+
+html {
+    font-size: 16px;
+
+    @include md {
+        font-size: 14px;
+    }
 }
 
 div {
@@ -122,7 +131,7 @@ select {
     text-transform: uppercase;
     padding: 16px 40px;
     border-radius: 12px;
-    display: inline-block;
+    @include flex(center, center);
     cursor: pointer;
     transition: all .4s ease;
     text-align: center;

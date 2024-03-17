@@ -55,8 +55,8 @@ const ProductCard = ({ product }: {
                     </div>
                 </div>
                 <div className="product__item--thumbs-img">
-                    <img src="/product/product1.png" alt={product.title} />
-                    <img src="/product/product2.png" alt={product.title} />
+                    <img src={product.images[0]} alt={product.title} />
+                    <img src={product.images[1]} alt={product.title} />
                 </div>
                 <div className='product__item--thumbs-buttons'>
                     <div onClick={handleQuickview}>Xem nhanh</div>

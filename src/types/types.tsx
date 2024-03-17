@@ -15,3 +15,10 @@ export interface ProductProps {
     totalQuantity: number;
     tag: string;
 }
+
+export interface CouponProps {
+    _id: string;
+    discount: number;
+    minimum: number;
+    code: string
+}

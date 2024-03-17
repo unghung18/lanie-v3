@@ -10,8 +10,9 @@ const ModalWishlist = ({ open }: {
     open: boolean;
 }) => {
 
-    const { wishlistItems } = useAppSelector(state => state.wishlist)
+    const { wishlistItems } = useAppSelector(state => state.wishlist);
     const dispatch = useAppDispatch();
+
     return (
         <div className={`overlay ${open ? "active" : ""}`}>
             <div className='modal-wishlist'>
@@ -26,7 +27,7 @@ const ModalWishlist = ({ open }: {
                         <div className='product-item' key={item._id}>
                             <div className='product-item__info'>
                                 <div className="product-item__info-image">
-                                    <img src="/product/product1.png" alt="product image" />
+                                    <img src={item.images[0]} alt="product image" />
                                 </div>
                                 <div className='product-item__info-content'>
                                     <div className='name'>mesh shirt</div>
