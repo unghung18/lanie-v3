@@ -4,8 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import "./SlideCollection.scss";
 import { collectionData } from '../../../../contants';
+import Link from 'next/link';
 
 const SlideCollection = () => {
+
     return (
         <Swiper
             navigation={true}
@@ -34,9 +36,9 @@ const SlideCollection = () => {
                             <div className="slide-collections__item--img">
                                 <img src={item.image} alt={item.name} />
                             </div>
-                            <div className="slide-collections__item--name">
+                            <Link href={item.navLink} className="slide-collections__item--name">
                                 {item.name}
-                            </div>
+                            </Link>
                         </div>
                     </SwiperSlide>
                 ))

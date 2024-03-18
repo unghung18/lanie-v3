@@ -4,31 +4,37 @@ export const collectionData = [
         _id: "1",
         name: "Outerwear",
         image: "/outerwear.webp",
+        navLink: "/product?category=outerwear"
     },
     {
         _id: "2",
         name: "T-Shirt",
         image: "t-shirt.webp",
+        navLink: "/product?category=t-shirt"
     },
     {
         _id: "3",
         name: "Swimwear",
         image: "swimwear.webp",
+        navLink: "/product?category=swimwear"
     },
     {
         _id: "4",
         name: "Top",
         image: "top.webp",
+        navLink: "/product?category=top"
     },
     {
         _id: "5",
         name: "Sets",
         image: "sets.webp",
+        navLink: "/product?category=sets"
     },
     {
         _id: "6",
         name: "Underwear",
         image: "underwear.webp",
+        navLink: "/product?category=underwear"
     }
 ]
 
@@ -560,22 +566,22 @@ export const couponData = [
 export const categoryProductPage = [
     {
         _id: "1",
-        name: "T-Shirt",
+        name: "Áo",
         quantity: 12,
     },
     {
         _id: "2",
-        name: "Dress",
+        name: "Đầm",
         quantity: 3,
     },
     {
         _id: "3",
-        name: "Top",
+        name: "Quần",
         quantity: 4,
     },
     {
         _id: "4",
-        name: "Shirt",
+        name: "Chân váy",
         quantity: 8,
     },
     {

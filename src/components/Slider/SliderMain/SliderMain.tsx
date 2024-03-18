@@ -3,6 +3,7 @@ import React from 'react';
 import "./SliderMain.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import Link from 'next/link';
 
 const SliderMain = () => {
 
@@ -20,7 +21,7 @@ const SliderMain = () => {
                 pagination={pagination}
                 modules={[Pagination, Autoplay]}
                 autoplay={{
-                    delay: 2500,
+                    delay: 3000,
                     disableOnInteraction: false,
                 }}
                 loop={true}
@@ -35,9 +36,9 @@ const SliderMain = () => {
                             <div style={{ width: "50%" }}>
                                 <div className='slide__item--content-main'>Sale! Up To 50% Off!</div>
                                 <div className='slide__item--content-sub'> Elevate Your <br /> Wardrobe Today</div>
-                                <div className='slide__item--content-button button'>
+                                <Link href="/product" className='slide__item--content-button button'>
                                     Shop now
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -51,15 +52,15 @@ const SliderMain = () => {
                             <div style={{ width: "50%" }}>
                                 <div className='slide__item--content-main'>Sale! Up To 50% Off!</div>
                                 <div className='slide__item--content-sub'> Elevate Your <br /> Wardrobe Today</div>
-                                <div className='slide__item--content-button button'>
+                                <Link href="/product" className='slide__item--content-button button'>
                                     Shop now
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </SwiperSlide>
             </Swiper>
-        </div>
+        </div >
     )
 }
 

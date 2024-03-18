@@ -30,10 +30,10 @@ const ModalWishlist = ({ open }: {
                                     <img src={item.images[0]} alt="product image" />
                                 </div>
                                 <div className='product-item__info-content'>
-                                    <div className='name'>mesh shirt</div>
+                                    <div className='name'>{item.title}</div>
                                     <div className='price'>
-                                        <span>150,000đ</span>
-                                        <span style={{ textDecoration: "line-through", color: "rgb(160 160 160)" }}>150,000đ</span>
+                                        <span>{item.price.toLocaleString()}đ</span>
+                                        <span style={{ textDecoration: "line-through", color: "rgb(160 160 160)" }}>{item.price.toLocaleString()}đ</span>
                                     </div>
                                 </div>
                             </div>

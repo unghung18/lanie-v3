@@ -99,19 +99,19 @@ const ProductInfo = ({ product }: {
             <div className='product-info__size'>
                 <div className="product-info__size-heading">
                     {selectedSize == undefined && <div>Kích cỡ:</div>}
-                    {selectedSize == "S" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m50 - 1m60 | 45kg - 50kg)</span></div>}
-                    {selectedSize == "M" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 51kg - 55kg)</span></div>}
-                    {selectedSize == "L" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m55 - 1m60 | 56kg - 60kg)</span></div>}
-                    {selectedSize == "XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 61kg - 64kg)</span></div>}
-                    {selectedSize == "2XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 65kg - 68kg)</span></div>}
-                    {selectedSize == "3XL" && <div>Kích cỡ:<strong> {selectedSize}</strong><span>(1m60 - 1m65 | 69kg - 70kg)</span></div>}
+                    {selectedSize == "s" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m50 - 1m60 | 45kg - 50kg)</span></div>}
+                    {selectedSize == "m" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m55 - 1m60 | 51kg - 55kg)</span></div>}
+                    {selectedSize == "l" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m55 - 1m60 | 56kg - 60kg)</span></div>}
+                    {selectedSize == "xl" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m60 - 1m65 | 61kg - 64kg)</span></div>}
+                    {selectedSize == "2xl" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m60 - 1m65 | 65kg - 68kg)</span></div>}
+                    {selectedSize == "3xl" && <div>Kích cỡ:<strong> {selectedSize.toUpperCase()}</strong><span>(1m60 - 1m65 | 69kg - 70kg)</span></div>}
                     <span style={{ textDecoration: "underline", cursor: "pointer", color: "#DB4444" }}>Sizes</span>
                 </div>
                 <ul className='product-info__size-list'>
                     {
                         product?.sizes.map((size, index) => (
                             <li key={index} onClick={() => setSelectedSize(size.name)} className={`${selectedSize && selectedSize == size.name && "active"}`}>
-                                {size.name}
+                                {size.name.toLocaleUpperCase()}
                             </li>
                         ))
                     }
