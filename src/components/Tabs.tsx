@@ -1,12 +1,22 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/Tabs.scss";
 import { Segmented } from 'antd';
 import ProductCard from './ProductCard';
 import { productData } from '../../contants';
+import { ProductProps } from '@/types/types';
 
-const Tabs = () => {
+const Tabs = ({ tabsData }: {
+    tabsData: {
+        ao: ProductProps[],
+        dam: ProductProps[],
+        quan: ProductProps[],
+        chanvay: ProductProps[]
+    }
+}) => {
+    const [products, setProducts] = useState<ProductProps[]>(tabsData.ao);
+
     return (
         <div className='tabs'>
             <div className='tabs__header'>
@@ -15,12 +25,23 @@ const Tabs = () => {
                     options={["Áo", 'Đầm', 'Quần', "Chân váy"]}
                     size='large'
                     onChange={(value) => {
-                        console.log(value);
+                        if (value === "Áo") {
+                            setProducts(tabsData.ao)
+                        }
+                        if (value === "Đầm") {
+                            setProducts(tabsData.dam)
+                        }
+                        if (value === "Quần") {
+                            setProducts(tabsData.quan)
+                        }
+                        if (value === "Chân váy") {
+                            setProducts(tabsData.chanvay)
+                        }
                     }}
                 />
             </div>
             <div className='list-product'>
-                {productData.slice(0, 12).map((item) => (
+                {products.map((item) => (
                     <ProductCard product={item} key={item._id} />
                 ))}
             </div>

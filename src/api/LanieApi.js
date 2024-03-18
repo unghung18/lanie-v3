@@ -23,3 +23,15 @@ export async function getOneProducts(id) {
     const data = await res.json()
     return data
 }
+
+export async function getProductsByCategory(category) {
+
+    const res = await fetch(`${baseUrl}/products?limit=8&category=${category}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    const data = await res.json()
+    return data
+}

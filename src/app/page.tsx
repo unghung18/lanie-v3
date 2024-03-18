@@ -8,8 +8,34 @@ import Newsletter from "@/components/Newsletter";
 import SliderInstagram from "@/components/Slider/SliderInstagram/SliderInstagram";
 import SliderBrand from "@/components/Slider/SliderBrand/SliderBrand";
 import Footer from "@/components/Footer";
+import { getProductsByCategory } from "@/api/LanieApi";
 
-export default function Home() {
+async function getDataAo() {
+  const res = await getProductsByCategory("Áo");
+  return res.data
+}
+async function getDataQuan() {
+  const res = await getProductsByCategory("Quần");
+  return res.data
+}
+async function getDataChanVay() {
+  const res = await getProductsByCategory("Chân váy");
+  return res.data
+}
+async function getDataDam() {
+  const res = await getProductsByCategory("Đầm");
+  return res.data
+}
+
+export default async function Home() {
+
+  const tabsData = {
+    ao: await getDataAo(),
+    dam: await getDataDam(),
+    quan: await getDataQuan(),
+    chanvay: await getDataChanVay()
+  }
+
   return (
     <>
       <div className="app">
@@ -52,7 +78,7 @@ export default function Home() {
 
           <section>
             <div className="section__container container">
-              <Tabs />
+              <Tabs tabsData={tabsData} />
             </div>
           </section>
 
