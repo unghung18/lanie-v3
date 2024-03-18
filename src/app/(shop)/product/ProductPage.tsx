@@ -24,6 +24,7 @@ const ProductPage = () => {
     const size = SearchParams.get("size");
     const color = SearchParams.get("color");
     const sale = SearchParams.get("sale");
+    const search = SearchParams.get("search");
 
     let queryParams: any;
 
@@ -128,7 +129,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         getAllProducts();
-    }, [category, sale, color, size]);
+    }, [category, sale, color, size, search]);
 
     return (
         <div className='product'>

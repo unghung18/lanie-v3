@@ -48,9 +48,16 @@ const ProductCard = ({ product }: {
     return (
         <div className='product__item' onClick={() => router.push(`/product/${product._id}`)}>
             <div className="product__item--thumbs">
-                <span className="product__item--thumbs-tag">
-                    Sale
-                </span>
+                {
+                    product.sale != 0 ?
+                        <span className="product__item--thumbs-tag" style={{ backgroundColor: "#DB4444", color: "#FFF" }}>
+                            Sale
+                        </span>
+                        :
+                        <span className="product__item--thumbs-tag" style={{ backgroundColor: "#D2EF9A", color: "#000" }}>
+                            New
+                        </span>
+                }
                 <div className="product__item--thumbs-actions">
                     <div className={`product__item--thumbs-actions-wishlist ${isExits() ? "active" : ""}`} onClick={handleAddToWishlist}>
                         <span>
@@ -79,8 +86,13 @@ const ProductCard = ({ product }: {
                 </div>
                 <div className='product__item--info-price'>
                     <span> {product.price.toLocaleString()}₫</span>
-                    <span> {product.price.toLocaleString()}₫</span>
-                    <span>-{product.sale}%</span>
+                    {product.sale != 0 &&
+                        <>
+                            <span> {product.price.toLocaleString()}₫</span>
+                            <span>{-product.sale}%</span>
+                        </>
+                    }
+
                 </div>
             </div>
         </div>

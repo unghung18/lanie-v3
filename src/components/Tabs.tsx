@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import "../styles/Tabs.scss";
 import { Segmented } from 'antd';
 import ProductCard from './ProductCard';
-import { productData } from '../../contants';
 import { ProductProps } from '@/types/types';
 
 const Tabs = ({ tabsData }: {

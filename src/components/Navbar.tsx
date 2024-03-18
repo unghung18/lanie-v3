@@ -10,11 +10,16 @@ import { MdMenuOpen } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
+import { megaMenuNavLinks } from '../../contants';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const { toggleCart } = useAppSelector((state) => state.toggleCart)
     const { totalQuantity } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch();
+
+    const pathname = usePathname();
+
     const headerRef = useRef<HTMLInputElement | null>(null);
 
     let oldScrollY = 0;
@@ -61,47 +66,24 @@ const Navbar = () => {
 
                 <ul className='header__menu'>
 
-                    <li className="header__menu--item">
+                    <li className={`header__menu--item ${pathname == "/" ? "active" : ""}`}>
                         <Link href="/">SHOP</Link>
                     </li>
-                    <li className="header__menu--item">
+                    <li className={`header__menu--item ${pathname == "/product" ? "active" : ""}`}>
                         <Link href="/product">SẢN PHẨM</Link>
                         <div className='mega-menu'>
                             <div className='mega-menu__container container'>
                                 <div className='nav-link'>
-                                    <div className='nav-link__item'>
-                                        <h3>THEO SẢN PHẨM</h3>
-                                        <ul>
-                                            <li><Link href="/">Tất cả</Link></li>
-                                            <li><Link href="/">Sản phẩm mới</Link></li>
-                                        </ul>
-                                    </div>
-                                    <div className='nav-link__item'>
-                                        <h3>QUẦN NỮ</h3>
-                                        <ul>
-                                            <li><Link href="/">Quần Jeans</Link></li>
-                                            <li><Link href="/">Quần dài</Link></li>
-                                            <li><Link href="/">Quần short</Link></li>
-                                            <li><Link href="/">Quần lửng</Link></li>
-                                            <li><Link href="/">Quần lót</Link></li>
-                                        </ul>
-                                    </div>
-                                    <div className='nav-link__item'>
-                                        <h3>ÁO NỮ</h3>
-                                        <ul>
-                                            <li><Link href="/">Áo sơ mi</Link></li>
-                                            <li><Link href="/">Áo dài</Link></li>
-                                            <li><Link href="/">Áo len</Link></li>
-                                            <li><Link href="/">Áo khoác</Link></li>
-                                        </ul>
-                                    </div>
-                                    <div className='nav-link__item'>
-                                        <h3>PHỤ KIỆN</h3>
-                                        <ul>
-                                            <li><Link href="/">Tất cả</Link></li>
-                                            <li><Link href="/">Sản phẩm mới</Link></li>
-                                        </ul>
-                                    </div>
+                                    {megaMenuNavLinks.map((item, index) => (
+                                        <div className='nav-link__item' key={index}>
+                                            <h3>{item.category.toLocaleUpperCase()}</h3>
+                                            <ul>
+                                                {item.navList.map((item, index) => (
+                                                    <li key={index}><Link href={item.path}>{item.title}</Link></li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className='banner-ads'>
                                     <div className='banner-ads__item'>

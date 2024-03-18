@@ -605,3 +605,108 @@ export const categoryProductPage = [
         quantity: 6,
     },
 ]
+
+export const megaMenuNavLinks = [
+    {
+        category: "Theo sản phẩm",
+        navList: [{
+            title: "Tất cả",
+            path: "/product"
+        },
+        {
+            title: "Sản phẩm mới",
+            path: "/product"
+        }]
+    },
+    {
+        category: "Áo nữ",
+        navList: [{
+            title: "Áo sơ mi",
+            path: "/product?search=so mi"
+        },
+        {
+            title: "Áo dài",
+            path: "/product?search=ao dai"
+        },
+        {
+            title: "Áo len",
+            path: "/product?search=ao len"
+        },
+        {
+            title: "Áo khoác",
+            path: "/product?search=ao khoac"
+        }]
+    },
+    {
+        category: "Quần nữ",
+        navList: [{
+            title: "Quần dài",
+            path: "/product?search=quan dai"
+        },
+        {
+            title: "Quần short",
+            path: "/product?search=quan short"
+        },
+        {
+            title: "Quần jeans",
+            path: "/product?search=quan jeans"
+        },
+        {
+            title: "Quần lửng",
+            path: "/product?search=quan lung"
+        }]
+    },
+    {
+        category: "Đầm",
+        navList: [{
+            title: "Đầm xuông",
+            path: "/product?search=dam xuong"
+        },
+        {
+            title: "Đầm dáng A",
+            path: "/product?search=dam dang a"
+        },
+        {
+            title: "Đầm ôm",
+            path: "/product?search=dam om"
+        },
+        {
+            title: "Đầm maxi",
+            path: "/product?search=dam maxi"
+        }]
+    },
+    {
+        category: "Chân váy",
+        navList: [{
+            title: "Chân váy xếp li",
+            path: "/product?search=chan vay xep li"
+        },
+        {
+            title: "Chân váy bút chì",
+            path: "/product?search=chan vay but chi"
+        },
+        {
+            title: "Chân váy chữ A",
+            path: "/product?search=chan vay chu a"
+        }]
+    },
+    {
+        category: "Áo nữ",
+        navList: [{
+            title: "Áo sơ mi",
+            path: "/product?search=so mi"
+        },
+        {
+            title: "Áo dài",
+            path: "/product?search=ao dai"
+        },
+        {
+            title: "Áo len",
+            path: "/product?search=ao len"
+        },
+        {
+            title: "Áo khoác",
+            path: "/product?search=ao khoac"
+        }]
+    },
+]
