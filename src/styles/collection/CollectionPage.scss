@@ -1,0 +1,44 @@
+@use '../../scss/' as *;
+
+.collection__container {
+    &>.item {
+        width: 100%;
+
+        &>.item-content {
+            display: flex;
+            gap: 4.25rem;
+            padding-top: 4rem;
+            width: 100%;
+
+            @include pc-1024 {
+                gap: 1.75rem;
+            }
+
+            @include md {
+                padding-top: 2rem;
+            }
+
+            @include sm {
+                flex-direction: column;
+            }
+
+            &>.left {
+
+                &>.list-product {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 10px;
+                }
+            }
+
+            &>.list-image {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                @include sm {}
+            }
+
+        }
+    }
+}

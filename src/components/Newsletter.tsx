@@ -11,7 +11,7 @@ const Newsletter = () => {
                 <div className="newsletter__container--text">
                     Sign up for early sale access, new in, promotions and more
                 </div>
-                <div className="newsletter__container--input">
+                <div className="input-block">
                     <form>
                         <input type="text" name="newsletter" placeholder='Enter your email' />
                         <button className='button'>SUBSCRIBE</button>

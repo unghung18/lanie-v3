@@ -27,6 +27,33 @@ export async function getOneProducts(id) {
 export async function getProductsByCategory(category) {
 
     const res = await fetch(`${baseUrl}/products?limit=8&category=${category}`, {
+        next: { revalidate: 3600 },
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    const data = await res.json()
+    return data
+}
+
+export async function getProductsBySearch(query) {
+
+    const res = await fetch(`${baseUrl}/products?limit=12&search=${query}`, {
+        next: { revalidate: 3600 },
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    const data = await res.json();
+    return data
+}
+
+export async function getCollections() {
+
+    const res = await fetch(`${baseUrl}/collections`, {
+        next: { revalidate: 3600 },
         method: "GET",
         headers: {
             "Content-Type": "application/json"

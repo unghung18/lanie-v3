@@ -1,5 +1,6 @@
-"use client"
-import React, { useEffect, useRef } from 'react';
+"use client";
+
+import React, { useEffect, useRef, useState } from 'react';
 import "../styles/Navbar.scss";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
@@ -11,19 +12,31 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { toggle } from '@/redux/slices/toggleCartSlice';
 import { toggleWishlist } from '@/redux/slices/toggleWishlistSlice';
 import { megaMenuNavLinks } from '../../contants';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = () => {
+
+    const [querySearch, setQuerySearch] = useState<string>("");
+
+
     const { toggleCart } = useAppSelector((state) => state.toggleCart)
     const { totalQuantity } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch();
-
     const pathname = usePathname();
-
     const headerRef = useRef<HTMLInputElement | null>(null);
+    const router = useRouter();
 
-    let oldScrollY = 0;
+    const handleChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setQuerySearch(event.target.value);
+    }
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        router.push(`/search-result?query=${querySearch}`);
+    }
+
     useEffect(() => {
+        let oldScrollY = 0;
 
         const handleScroll = () => {
             if (window.scrollY == 0) {
@@ -52,10 +65,10 @@ const Navbar = () => {
     return (
         <header className='header' ref={headerRef}>
             <div className='header__container container'>
-                <div className='header__search'>
-                    <CiSearch className='header__search--icon' />
-                    <input type="text" placeholder='What are you looking for?' />
-                </div>
+                <form className='header__search' onSubmit={handleSubmit}>
+                    <button className='header__search--icon'><CiSearch /></button>
+                    <input type="text" placeholder='What are you looking for?' onChange={handleChangeSearchInput} />
+                </form>
 
                 <div className='header__menu--toggle'>
                     <MdMenuOpen size={24} />

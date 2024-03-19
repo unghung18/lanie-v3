@@ -1,0 +1,99 @@
+@use '../scss/' as *;
+
+.page-not-found {
+    margin-top: 74px;
+    padding: 5rem 0;
+    background: linear-gradient(238deg, #faf8f1, #f6f3ef 99.66%);
+
+    @include md {
+        margin-top: 56px;
+    }
+
+    &>.page__container {
+        display: flex;
+        gap: 2.5rem;
+
+        @include sm {
+            flex-direction: column;
+        }
+
+        &>.info {
+            width: 50%;
+        }
+
+        &>.content {
+            .status-code {
+                font-size: 140px;
+                line-height: 152px;
+                font-weight: 600;
+
+                @include pc-1024 {
+                    font-size: 80px;
+                    line-height: 92px;
+                }
+
+                @include md {
+                    font-size: 42px;
+                    line-height: 52px;
+                }
+            }
+
+            &>.error {
+                margin-top: 1rem;
+                font-weight: 600;
+                text-transform: capitalize;
+                font-size: 44px;
+                line-height: 50px;
+
+                @include pc-1024 {
+                    font-size: 32px;
+                    line-height: 40px;
+                }
+
+                @include md {
+                    font-size: 22px;
+                    line-height: 30px;
+                }
+            }
+
+            &>.description {
+                font-size: 18px;
+                line-height: 28px;
+                font-weight: 400;
+                padding-bottom: 1rem;
+                margin-top: 1rem;
+                color: rgb(105 108 112 / 1);
+
+                @include md {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+            }
+
+            &>.button-back {
+                @include flex(center, center);
+                gap: 0.75rem;
+                width: max-content;
+                padding: 0.5rem 1rem;
+                background-color: #000;
+                color: #fff;
+                border-radius: 0.8rem;
+                cursor: pointer;
+
+                @include md {
+                    border-radius: 12px;
+                }
+
+                @include sm {
+                    font-size: 13px;
+                    border-radius: 8px;
+                }
+
+                &:hover {
+                    background-color: #fff;
+                    color: #000;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+@use "../../scss/" as *;
+
+.search-page {
+
+    &>.search-page__container {
+        padding: 5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include md {
+            padding: 3.5rem 1rem;
+        }
+
+        &>.heading {
+            font-size: 30px;
+            line-height: 42px;
+            font-weight: 600;
+            text-transform: capitalize;
+            text-align: center;
+
+            @include pc-1024 {
+                font-size: 26px;
+                line-height: 32px;
+            }
+
+            @include md {
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+
+        &>.list-product-block {
+            width: 100%;
+            padding-top: 2.5rem;
+
+            @include md {
+                padding-top: 1.5rem;
+            }
+
+            &>.heading {
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: 600;
+                text-transform: capitalize;
+
+                @include pc-1024 {
+                    font-size: 18px;
+                    line-height: 26px;
+                }
+
+                @include md {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+
+            &>.list-product-main {
+                display: grid;
+                gap: 30px;
+                margin-top: 1.25rem;
+                grid-template-columns: repeat(4, 1fr);
+
+                @include pc-1024 {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                @include sm {
+                    gap: 20px;
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+
+    }
+}

@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import CollectionPage from './CollectionPage';
+import { getCollections } from '@/api/LanieApi';
 
-const Page = () => {
+async function getData() {
+    const res = await getCollections();
+    return res.data;
+}
+
+const Page = async () => {
+    const collections = await getData();
+
     return (
-        <div>Page</div>
+        <>
+            <CollectionPage collections={collections} />
+        </>
     )
 }
 
-export default Page;
+export default Page
