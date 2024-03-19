@@ -10,6 +10,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { IoClose } from "react-icons/io5";
 import { ProductProps } from '@/types/types';
 import { getProducts } from '@/api/LanieApi';
+import SkeletonProductCard from '@/components/SkeletonProductCard/SkeletonProductCard';
 
 const ProductPage = () => {
 
@@ -254,12 +255,19 @@ const ProductPage = () => {
                         }
                     </div>
                     <div className='product-list__main' style={{ gridTemplateColumns: `repeat(${selectedLayout}, 1fr)` }}>
-                        {products.length > 0 ? products.slice(0, 12).map((item) => (
-                            <ProductCard product={item} key={item._id} />
-                        ))
-                            :
-                            <div className='product-list__main'> Không tìm thấy sản phẩm nào</div>
+                        {
+                            loading ?
+                                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (
+                                    <SkeletonProductCard key={index} />
+                                ))
+                                :
+                                products.length > 0 ? products.slice(0, 12).map((item) => (
+                                    <ProductCard product={item} key={item._id} />
+                                ))
+                                    :
+                                    <div> Không tìm thấy sản phẩm nào</div>
                         }
+
                     </div>
                 </div>
             </div>

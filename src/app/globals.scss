@@ -73,6 +73,28 @@ button {
     @include flex(center, center);
 }
 
+@keyframes shine-lines {
+    0% {
+        background-position: -100px;
+    }
+
+    40%,
+    100% {
+        background-position: 140px;
+    }
+}
+
+@keyframes shine-avatar {
+    0% {
+        background-position: -100px + $avatar-offset;
+    }
+
+    40%,
+    100% {
+        background-position: 140px + $avatar-offset;
+    }
+}
+
 /* class chung */
 .app__content {
     margin-top: 74px;
@@ -243,6 +265,8 @@ button {
         }
     }
 }
+
+
 
 /* CSS trang home */
 

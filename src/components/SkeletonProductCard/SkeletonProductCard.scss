@@ -1,0 +1,36 @@
+@use '../../scss/' as *;
+
+.card {
+    width: 100%;
+
+    &>.card__image {
+        width: 100%;
+        background-color: #ccc;
+        border-radius: 16px;
+        aspect-ratio: 3/4;
+
+        @include background-gradient;
+        animation: shine-avatar $animation-duration infinite linear;
+    }
+
+    &>.card__footer {
+
+        &>.line {
+            height: 16px;
+            margin-top: 8px;
+            border-radius: 7px;
+
+            @include background-gradient;
+            animation: shine-lines $animation-duration infinite linear;
+        }
+
+        &>.line:nth-child(1) {
+            width: 70%;
+
+        }
+
+        &>.line:nth-child(2) {
+            width: 50%;
+        }
+    }
+}

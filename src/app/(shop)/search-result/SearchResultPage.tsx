@@ -6,9 +6,10 @@ import { getProductsBySearch } from '@/api/LanieApi';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ProductProps } from '@/types/types';
 import ProductCard from '@/components/ProductCard';
+import SkeletonProductCard from '@/components/SkeletonProductCard/SkeletonProductCard';
 
 const SearchResultPage = () => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [products, setProducts] = useState<ProductProps[]>([])
     const [querySearch, setQuerySearch] = useState<string>("");
 
@@ -57,10 +58,15 @@ const SearchResultPage = () => {
                 <div className='list-product-block'>
                     <div className='heading'>Tìm kiếm sản phẩm: <span>{query}</span></div>
                     <div className='list-product-main'>
-                        {
+                        {loading ?
+                            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (
+                                <SkeletonProductCard key={index} />
+                            ))
+                            :
                             products.map((item) => (
                                 <ProductCard product={item} key={item._id} />
                             ))
+
                         }
                     </div>
                 </div>
