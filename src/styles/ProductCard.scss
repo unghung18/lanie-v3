@@ -123,7 +123,7 @@
             transform: translateY(100px);
             @include flex(center, center);
 
-            div {
+            &>div {
                 background-color: #fff;
                 border-radius: 24px;
                 padding: 8px 10px;
@@ -132,9 +132,15 @@
                 font-weight: 500;
                 text-transform: uppercase;
                 text-align: center;
+                transition-duration: 0.5s;
+
+                &:hover {
+                    background-color: #000;
+                    color: #fff;
+                }
             }
 
-            a {
+            &>a {
                 background-color: #fff;
                 border-radius: 24px;
                 padding: 8px 10px;
@@ -143,6 +149,12 @@
                 font-weight: 500;
                 text-transform: uppercase;
                 text-align: center;
+                transition-duration: 0.5s;
+
+                &:hover {
+                    background-color: #000;
+                    color: #fff;
+                }
             }
         }
     }

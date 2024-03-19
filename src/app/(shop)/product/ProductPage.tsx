@@ -261,7 +261,7 @@ const ProductPage = () => {
                                     <SkeletonProductCard key={index} />
                                 ))
                                 :
-                                products.length > 0 ? products.slice(0, 12).map((item) => (
+                                products.length > 0 ? products.map((item) => (
                                     <ProductCard product={item} key={item._id} />
                                 ))
                                     :

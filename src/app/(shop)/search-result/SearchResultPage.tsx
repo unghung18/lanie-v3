@@ -24,6 +24,7 @@ const SearchResultPage = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         router.push(`/search-result?query=${querySearch}`)
+        setQuerySearch("");
     }
 
     const getSearchProductData = async () => {
@@ -51,7 +52,7 @@ const SearchResultPage = () => {
                 <div className='heading'>Found <span>5</span> Results For <span>{query ? `"${query}"` : `""`}</span></div>
                 <div className="input-block">
                     <form onSubmit={handleSubmit}>
-                        <input type="text" name="search" placeholder='Tìm kiếm.....' onChange={handleChangeInput} />
+                        <input type="text" name="search" placeholder='Tìm kiếm.....' value={querySearch} onChange={handleChangeInput} />
                         <button className='button'>SEARCH</button>
                     </form>
                 </div>
@@ -63,10 +64,11 @@ const SearchResultPage = () => {
                                 <SkeletonProductCard key={index} />
                             ))
                             :
-                            products.map((item) => (
+                            products.length > 0 ? products.slice(0, 12).map((item) => (
                                 <ProductCard product={item} key={item._id} />
                             ))
-
+                                :
+                                <div> Không tìm thấy sản phẩm nào</div>
                         }
                     </div>
                 </div>

@@ -33,6 +33,7 @@ const Navbar = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         router.push(`/search-result?query=${querySearch}`);
+        setQuerySearch("");
     }
 
     useEffect(() => {
@@ -67,7 +68,7 @@ const Navbar = () => {
             <div className='header__container container'>
                 <form className='header__search' onSubmit={handleSubmit}>
                     <button className='header__search--icon'><CiSearch /></button>
-                    <input type="text" placeholder='What are you looking for?' onChange={handleChangeSearchInput} />
+                    <input type="text" placeholder='What are you looking for?' value={querySearch} onChange={handleChangeSearchInput} />
                 </form>
 
                 <div className='header__menu--toggle'>

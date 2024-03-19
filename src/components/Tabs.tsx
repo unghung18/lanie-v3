@@ -1,17 +1,14 @@
 "use client"
 
-import React, { useState } from 'react';
+import { useRef, useState } from "react";
 import "../styles/Tabs.scss";
-import { Segmented } from 'antd';
 import ProductCard from './ProductCard';
 import { ProductProps } from '@/types/types';
+import SegmentedControl from './SegmentedControl/SegmentedControl';
 
 const Tabs = ({ tabsData }: {
     tabsData: {
-        ao: ProductProps[],
-        dam: ProductProps[],
-        quan: ProductProps[],
-        chanvay: ProductProps[]
+        [key: string]: any;
     }
 }) => {
     const [products, setProducts] = useState<ProductProps[]>(tabsData.ao);
@@ -20,23 +17,34 @@ const Tabs = ({ tabsData }: {
         <div className='tabs'>
             <div className='tabs__header'>
                 <h2>What's New</h2>
-                <Segmented<string>
-                    options={["Áo", 'Đầm', 'Quần', "Chân váy"]}
-                    size='large'
-                    onChange={(value) => {
-                        if (value === "Áo") {
-                            setProducts(tabsData.ao)
+                <SegmentedControl
+                    name="group-2"
+                    callback={(val: any) => setProducts(tabsData[val])}
+                    controlRef={useRef()}
+                    defaultIndex={0}
+                    segments={[
+                        {
+                            label: "Áo",
+                            value: "ao",
+                            ref: useRef()
+                        },
+                        {
+                            label: "Quần",
+                            value: "quan",
+                            ref: useRef()
+                        },
+                        {
+                            label: "Chân váy",
+                            value: "chanvay",
+                            ref: useRef()
                         }
-                        if (value === "Đầm") {
-                            setProducts(tabsData.dam)
+                        ,
+                        {
+                            label: "Đầm",
+                            value: "dam",
+                            ref: useRef()
                         }
-                        if (value === "Quần") {
-                            setProducts(tabsData.quan)
-                        }
-                        if (value === "Chân váy") {
-                            setProducts(tabsData.chanvay)
-                        }
-                    }}
+                    ]}
                 />
             </div>
             <div className='list-product'>
