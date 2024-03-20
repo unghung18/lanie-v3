@@ -37,6 +37,10 @@
             text-align: center;
             z-index: 1;
 
+            @include sm {
+                min-width: 70px;
+            }
+
             &.active label {
                 color: #000;
             }

@@ -367,13 +367,12 @@
             &>.header__actions-user {
                 cursor: pointer;
                 height: 100%;
-                position: relative;
                 @include flex(center, center);
 
                 &>.login-dropdown {
                     position: absolute;
                     top: 100%;
-                    right: -80px;
+                    right: 1rem;
                     background-color: rgb(255 255 255);
                     color: #000;
                     padding: 1.75rem;
@@ -384,10 +383,6 @@
                     visibility: hidden;
                     transform: translateY(30px);
                     transition: all .4s ease;
-
-                    @include sm {
-                        right: -40px;
-                    }
 
                     &.active {
                         opacity: 1;
