@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import '../../../styles/login/login.scss';
 
-const page = () => {
+const Page = () => {
 
     const [visible, setVisible] = useState(true);
     const [user, setUser] = useState({
@@ -88,4 +88,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
