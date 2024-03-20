@@ -331,6 +331,7 @@
 
         .header__actions {
             gap: 16px;
+            height: 100%;
             @include flex(flex-start, center);
 
             &>.header__actions-cart {
@@ -350,6 +351,95 @@
                     font-size: .75rem;
                     line-height: 1rem;
                     @include flex(center, center);
+                }
+            }
+
+            &>.header__actions-wishlist {
+                cursor: pointer;
+                height: 100%;
+                @include flex(center, center);
+
+                @include sm {
+                    display: none;
+                }
+            }
+
+            &>.header__actions-user {
+                cursor: pointer;
+                height: 100%;
+                position: relative;
+                @include flex(center, center);
+
+                &>.login-dropdown {
+                    position: absolute;
+                    top: 100%;
+                    right: -80px;
+                    background-color: rgb(255 255 255);
+                    color: #000;
+                    padding: 1.75rem;
+                    width: 320px;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 10px 25px 0 rgba(43, 52, 74, .12);
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(30px);
+                    transition: all .4s ease;
+
+                    @include sm {
+                        right: -40px;
+                    }
+
+                    &.active {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+
+                    &>.button-login {
+                        background-color: #000;
+                        color: #fff;
+
+                        &:hover {
+                            background-color: #d2ef9a;
+                            color: #000;
+                        }
+                    }
+
+                    &>.text-sub {
+                        color: rgb(105 108 112);
+                        text-align: center;
+                        padding-bottom: 1rem;
+                        margin-top: 0.75rem;
+                        text-align: center;
+                        border-bottom: 2px solid rgb(233 233 233);
+
+                        &>a {
+                            color: #000;
+                            margin-left: 5px;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                    }
+
+                    &>.support {
+                        padding-top: 1rem;
+                        font-size: 18px;
+                        line-height: 28px;
+                        font-weight: 400;
+
+                        @include md {
+                            font-size: 16px;
+                            line-height: 26px;
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+
+                    }
                 }
             }
         }

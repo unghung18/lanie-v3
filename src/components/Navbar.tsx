@@ -17,7 +17,7 @@ import { usePathname, useRouter } from 'next/navigation';
 const Navbar = () => {
 
     const [querySearch, setQuerySearch] = useState<string>("");
-
+    const [isActiveLoginDropdown, setIsActiveLoginDropdown] = useState<boolean>(false);
 
     const { toggleCart } = useAppSelector((state) => state.toggleCart)
     const { totalQuantity } = useAppSelector((state) => state.cart)
@@ -74,6 +74,7 @@ const Navbar = () => {
                 <div className='header__menu--toggle'>
                     <MdMenuOpen size={24} />
                 </div>
+
                 <Link href="/" className='header__logo logo'>
                     Lanie
                 </Link>
@@ -137,10 +138,20 @@ const Navbar = () => {
                     </li>
                 </ul>
                 <div className='header__actions'>
-                    <div style={{ cursor: "pointer" }}>
+                    <div className='header__actions-user' onClick={() => setIsActiveLoginDropdown(!isActiveLoginDropdown)}>
                         <AiOutlineUser size={24} />
+
+                        <div className={`login-dropdown ${isActiveLoginDropdown ? "active" : ""}`}>
+                            <Link href="/login" className='button-login button-main'>Login</Link>
+                            <div className='text-sub'>
+                                Don’t have an account?
+                                <Link href="/register">Register</Link>
+                            </div>
+
+                            <div className='support'>Support</div>
+                        </div>
                     </div>
-                    <div style={{ cursor: "pointer" }} onClick={() => dispatch(toggleWishlist(true))}>
+                    <div className='header__actions-wishlist' onClick={() => dispatch(toggleWishlist(true))}>
                         <IoMdHeartEmpty size={24} />
                     </div>
                     <div className='header__actions-cart'>
