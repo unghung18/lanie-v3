@@ -1,0 +1,45 @@
+@use '../../scss/' as *;
+
+.checkout-page {
+    background-color: #fafafa;
+
+    .checkout-page__container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+
+        &>.checkout-sidebar {
+            flex: 1;
+            padding: 3.5rem 6% 0 0;
+
+            &>.logo {
+                margin-bottom: 2rem;
+            }
+
+            &>.breadscum {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                margin-bottom: 1rem;
+
+                &>div {
+                    color: #4D4D4D;
+                    font-size: 13px;
+                }
+
+                &>span {
+                    @include flex(center, center);
+                    color: #999999;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &>.checkout-sumary {
+            box-shadow: 1px 0 0 #e1e1e1 inset;
+            width: 38%;
+            padding: 3.5rem 0 0 4%;
+        }
+    }
+}

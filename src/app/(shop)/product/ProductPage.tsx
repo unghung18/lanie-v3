@@ -21,11 +21,11 @@ const ProductPage = () => {
     const router = useRouter();
     const SearchParams = useSearchParams();
 
-    const category = SearchParams.get("category");
-    const size = SearchParams.get("size");
-    const color = SearchParams.get("color");
-    const sale = SearchParams.get("sale");
-    const search = SearchParams.get("search");
+    const category = SearchParams.get("category") ? SearchParams.get("category") : "";
+    const size = SearchParams.get("size") ? SearchParams.get("size") : "";
+    const color = SearchParams.get("color") ? SearchParams.get("color") : "";
+    const sale = SearchParams.get("sale") ? SearchParams.get("sale") : "";
+    const search = SearchParams.get("search") ? SearchParams.get("search") : "";
 
     let queryParams: any;
 
