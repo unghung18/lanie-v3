@@ -24,6 +24,7 @@ const ProductInfo = ({ product }: {
     const dispatch = useAppDispatch();
 
     const { wishlistItems } = useAppSelector(state => state.wishlist);
+    const openQuickView = useAppSelector((state) => state.toggleQuickview.toggleQuickview)
 
     function isExits() {
         for (const item of wishlistItems) {
@@ -53,6 +54,11 @@ const ProductInfo = ({ product }: {
             }
         ))
     }
+    useEffect(() => {
+        setQuantity(1)
+        setSelectedColor(undefined);
+        setSelectedSize(undefined);
+    }, [openQuickView]);
 
     return (
         <div className='product-info'>
