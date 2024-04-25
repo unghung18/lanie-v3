@@ -10,7 +10,11 @@ import { useSelector } from 'react-redux';
 import { ToastContainer, toast, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const Page = () => {
+const Page = ({ params }: {
+    params: {
+        id: string
+    }
+}) => {
 
     const [divisons, setDivisions] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
@@ -32,6 +36,8 @@ const Page = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("1");
     const [paymentMethod, setPaymentMethod] = useState("1");
     const [totalPayment, setTotalPayment] = useState<number>(0);
+
+    const { id } = params
 
     const { totalAmount } = useAppSelector(state => state.cart);
     const router = useRouter();
@@ -57,11 +63,17 @@ const Page = () => {
             const result = divisons.filter((item: any) => item.Id == event.target.value);
             setDistricts(result[0].Districts);
         }
+        else {
+            setDistricts([]);
+        }
     }
     const handleChangeDistrict = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         if (event.target.value !== "default") {
             const result = districts.filter((item: any) => item.Id == event.target.value);
-            setWards(result[0].Wards);
+            setWards(result[0]?.Wards);
+        }
+        else {
+            setWards([]);
         }
     }
 
@@ -70,7 +82,6 @@ const Page = () => {
     }
 
     const handleOrder = () => {
-        console.log(info)
         if (info.name == '' || info.email == '' || info.phone == '' || info.address == '') {
             toast.error("Vui lòng nhập đầy đủ thông tin", {
                 theme: "colored"
@@ -93,13 +104,13 @@ const Page = () => {
         <>
             <div className='px-5 md:px-10 lg:px-40 max-w-[1280px] mx-auto grid md:grid-cols-10 gap-5 py-10 bg-gradient-to-r from-[#faf8f1] to-[#f6f3ef] grid-cols-1 min-h-[100vh]'>
                 <div className=' space-y-3 col-span-7 bg-white py-4 px-5'>
-                    <h2>Thông tin thanh toán</h2>
+                    <h2 className='font-bold text-[30px] my-3'>Thông tin thanh toán</h2>
                     <input onChange={handleChangeInput} name='name' type="text" placeholder='Họ và tên' className='w-full placeholder:font-extralight placeholder:text-gray-500 outline-none border-2 p-2 rounded-md border-gray-400 text-[#333333] shadow-sm focus:border-[#338dbc] focus:border-2' />
                     <div className='grid grid-cols-10'>
                         <input onChange={handleChangeInput} name='email' type="email" placeholder='Email' className='col-span-7 placeholder:font-extralight placeholder:text-gray-500 outline-none border-2 p-2 rounded-md border-gray-400 mr-3 text-[#333333] shadow-sm focus:border-[#338dbc] focus:border-2' />
                         <input onChange={handleChangeInput} name='phone' type="text" placeholder='Điện thoại' className='col-span-3 placeholder:font-extralight placeholder:text-gray-500 outline-none border-2 p-2 rounded-md border-gray-400 text-[#333333] shadow-sm focus:border-[#338dbc] focus:border-2' />
                     </div>
-                    <input onChange={handleChangeInput} name='address' type="text" placeholder='Địa chỉ' className='w-full placeholder:font-extralight placeholder:text-gray-500 outline-none border-2 p-2 rounded-md border-gray-400 text-[#333333] shadow-sm focus:border-[#338dbc] focus:border-2' />
+                    <input onChange={handleChangeInput} name='address' type="text" placeholder='Địa chỉ số nhà, đường, ngõ,...' className='w-full placeholder:font-extralight placeholder:text-gray-500 outline-none border-2 p-2 rounded-md border-gray-400 text-[#333333] shadow-sm focus:border-[#338dbc] focus:border-2' />
                     <div className='grid grid-cols-3 gap-5'>
                         <div className='p-2 border rounded-md border-gray-400 flex items-center'>
                             <div className='flex flex-col w-full'>
@@ -160,7 +171,7 @@ const Page = () => {
                 </div>
                 <div className='col-span-3 max-h-[400px] flex flex-col gap-3'>
                     <div className='rounded-lg p-5 bg-white'>
-                        <div className=' border-b-[#fffff] border-b-2 p-1 mb-4'>Địa chỉ: {info.address}</div>
+                        <div className=' border-b-[#fffff] border-b-2 p-1 mb-4'>Địa chỉ: {`${info.address}`}</div>
                         <div>
                             <div className='flex justify-between items-center'>
                                 <p>Tạm tính</p>
