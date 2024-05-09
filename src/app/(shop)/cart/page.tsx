@@ -8,11 +8,13 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addItem, deleteItem, removeItem } from '@/redux/slices/cartSlice';
 import { couponData } from '../../../../contants';
 import { CouponProps } from '@/types/types';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
 
     const { totalAmount, cartItems } = useAppSelector(state => state.cart);
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
     const [discountCost, setDiscountCost] = useState<CouponProps | undefined>(undefined);
     const [shipCost, setShipCost] = useState<number>(20000);
@@ -207,7 +209,7 @@ const Page = () => {
                         <div>{discountCost ? (totalAmount - Math.floor(discountCost.discount * totalAmount / 100) + shipCost).toLocaleString() : (totalAmount + shipCost).toLocaleString()}₫</div>
                     </div>
                     <div className='button-block' >
-                        <div className='button-main'>Tiến hành thanh toán</div>
+                        <div onClick={() => router.push('https://lanie.netlify.app/checkout')} className='button-main'>Tiến hành thanh toán</div>
                         <div>Tiếp tục mua hàng</div>
                     </div>
                 </div>
