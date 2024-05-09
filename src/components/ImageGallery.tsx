@@ -18,7 +18,7 @@ const ImageGallery = ({ imageUrls }: {
                 ))}
             </div>
             <div className='gallery__image flex-1 max-md:mb-5'>
-                <img src={imageUrls && imageUrls[selectedImage]} alt="product" className='w-[380px] max-md:w-full' />
+                <img src={imageUrls && imageUrls[selectedImage]} alt="product" className='w-full' />
             </div>
         </div>
     )

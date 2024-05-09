@@ -9,6 +9,9 @@ import 'swiper/css/thumbs';
 import ReduxProvider from "@/redux/provider";
 import Modal from "@/components/Modal";
 
+import { ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,6 +32,12 @@ export default function RootLayout({
           {children}
           <div></div>
           <Modal />
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            limit={5}
+            transition={Slide}
+          />
         </body>
       </ReduxProvider>
     </html>

@@ -106,25 +106,12 @@ const Page = ({ searchParams }: { searchParams: { [key: string]: string | undefi
 
     const getAllProducts = async () => {
         setLoading(true);
-        try {
-            if (typeof window !== "undefined") {
-                queryParams = new URLSearchParams(window.location.search);
-            }
 
-            const res = await getProducts(queryParams.toString())
-            console.log(res.data);
-            if (res.error) {
-                alert(res.error.message)
-            }
+        const { data } = await getProducts(searchParams);
 
-            else {
-                setProducts(res.data)
-            }
+        setProducts(data);
 
-            setLoading(false);
-        } catch (error) {
-            alert(error)
-        }
+        setLoading(false);
     }
 
     useEffect(() => {

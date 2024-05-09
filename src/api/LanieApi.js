@@ -1,15 +1,35 @@
 const baseUrl = "https://lanie-backend-mongodb.onrender.com/api";
+import { toast } from "react-toastify";
 
-export async function getProducts(query) {
+export async function getProducts(searchParams) {
 
-    const res = await fetch(`${baseUrl}/products?${query}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    })
-    const data = await res.json()
-    return data
+    const params = new URLSearchParams(searchParams).toString();
+
+    try {
+        const res = await fetch(`${baseUrl}/products?${params}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+
+        if (res.ok) {
+            const data = await res.json()
+            return data
+        }
+        else {
+            toast.error("Something gone wrong", {
+                theme: "colored"
+            })
+            return {
+                data: []
+            }
+        }
+
+    } catch (error) {
+        throw new Error(error);
+    }
+
 }
 
 export async function getOneProducts(id) {
