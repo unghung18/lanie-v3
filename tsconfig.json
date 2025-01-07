@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "src/components/ImageGalery/ImageGallery.jsx",
     "src/hooks/CountDownTimer.js"
-  ],
+,   "src/components/ChatAI.js"  ],
   "exclude": [
     "node_modules"
   ]
