@@ -82,3 +82,15 @@ export async function getCollections() {
     const data = await res.json()
     return data
 }
+
+export async function login(body) {
+    const res = await fetch(`${baseUrl}/auth/sign-in`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    return data;
+  }

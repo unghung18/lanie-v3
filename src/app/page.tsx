@@ -1,77 +1,82 @@
+import { getProductsByCategory } from "@/api/LanieApi";
+import FlashSale from "@/components/FlashSale";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Newsletter from "@/components/Newsletter";
 import BannerTop from "@/components/Slider/BannerTop/BannerTop";
+import SlideCollection from "@/components/Slider/SlideCollection/SlideCollection";
+import SliderBrand from "@/components/Slider/SliderBrand/SliderBrand";
+import SliderInstagram from "@/components/Slider/SliderInstagram/SliderInstagram";
 import SliderMain from "@/components/Slider/SliderMain/SliderMain";
 import Tabs from "@/components/Tabs";
-import SlideCollection from "@/components/Slider/SlideCollection/SlideCollection";
-import FlashSale from "@/components/FlashSale";
-import Newsletter from "@/components/Newsletter";
-import SliderInstagram from "@/components/Slider/SliderInstagram/SliderInstagram";
-import SliderBrand from "@/components/Slider/SliderBrand/SliderBrand";
-import Footer from "@/components/Footer";
-import { getProductsByCategory } from "@/api/LanieApi";
 
 async function getDataAo() {
   const res = await getProductsByCategory("Áo");
-  return res.data
+  return res.data;
 }
+
 async function getDataQuan() {
   const res = await getProductsByCategory("Quần");
-  return res.data
+  return res.data;
 }
 async function getDataChanVay() {
   const res = await getProductsByCategory("Chân váy");
-  return res.data
+  return res.data;
 }
 async function getDataDam() {
   const res = await getProductsByCategory("Đầm");
-  return res.data
+  return res.data;
 }
 
 export default async function Home() {
-
   const tabsData = {
     ao: await getDataAo(),
     dam: await getDataDam(),
     quan: await getDataQuan(),
-    chanvay: await getDataChanVay()
-  }
+    chanvay: await getDataChanVay(),
+  };
 
   return (
     <>
       <div className="app">
         <Navbar />
         <div className="app__content">
-
           <BannerTop />
 
           <SliderMain />
 
           <div className="banner__block container">
             <div className="banner__block--item">
-              <img src="/banner3.png" alt="banner__block" className="banner__block--item-image" />
+              <img
+                src="/banner3.png"
+                alt="banner__block"
+                className="banner__block--item-image"
+              />
               <div className="banner__block--item-content">
                 <p>Best Men's Fashion</p>
-                <button>
-                  Shop Now
-                </button>
+                <button>Shop Now</button>
               </div>
             </div>
             <div className="banner__block--item">
-              <img src="/banner1.png" alt="banner__block" className="banner__block--item-image" />
+              <img
+                src="/banner1.png"
+                alt="banner__block"
+                className="banner__block--item-image"
+              />
               <div className="banner__block--item-content">
                 <p>Summer Sale Collection</p>
-                <button>
-                  Shop Now
-                </button>
+                <button>Shop Now</button>
               </div>
             </div>
             <div className="banner__block--item">
-              <img src="/banner2.png" alt="banner__block" className="banner__block--item-image" />
+              <img
+                src="/banner2.png"
+                alt="banner__block"
+                className="banner__block--item-image"
+              />
               <div className="banner__block--item-content">
                 <p>20% Off Accessories</p>
-                <button>
-                  Shop Now
-                </button>
+                <button>Shop Now</button>
               </div>
             </div>
           </div>
@@ -95,13 +100,17 @@ export default async function Home() {
             <div className="benefit__container container">
               <div className="benefit__container__item">
                 <div className="benefit__container__item--icon">
-                  <img src="/benefitIcon/phone-call.png" alt="phone call icon" />
+                  <img
+                    src="/benefitIcon/phone-call.png"
+                    alt="phone call icon"
+                  />
                 </div>
                 <div className="benefit__container__item--heading">
                   24/7 Customer Service
                 </div>
                 <div className="benefit__container__item--caption">
-                  We're here to help you with any questions or concerns you have, 24/7.
+                  We're here to help you with any questions or concerns you
+                  have, 24/7.
                 </div>
               </div>
 
@@ -113,7 +122,8 @@ export default async function Home() {
                   14-Day Money Back
                 </div>
                 <div className="benefit__container__item--caption">
-                  If you're not satisfied with your purchase, simply return it within 14 days for a refund.
+                  If you're not satisfied with your purchase, simply return it
+                  within 14 days for a refund.
                 </div>
               </div>
 
@@ -125,7 +135,8 @@ export default async function Home() {
                   Our Guarantee
                 </div>
                 <div className="benefit__container__item--caption">
-                  We stand behind our products and services and guarantee your satisfaction.
+                  We stand behind our products and services and guarantee your
+                  satisfaction.
                 </div>
               </div>
 
@@ -137,7 +148,8 @@ export default async function Home() {
                   Shipping worldwide
                 </div>
                 <div className="benefit__container__item--caption">
-                  We ship our products worldwide, making them accessible to customers everywhere.
+                  We ship our products worldwide, making them accessible to
+                  customers everywhere.
                 </div>
               </div>
             </div>
@@ -153,7 +165,6 @@ export default async function Home() {
           </section>
 
           <section className="brand container">
-
             <SliderBrand />
           </section>
 
