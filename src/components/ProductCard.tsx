@@ -1,8 +1,11 @@
+"use client";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { toggleQuickview } from "@/redux/slices/toggleQuickviewSlice";
 import { toggleWishlist } from "@/redux/slices/toggleWishlistSlice";
 import { addWishlistItem } from "@/redux/slices/wishlistSlice";
 import { ProductProps } from "@/types/types";
+import { formatCurrency } from "@/utils/FormatCurrency";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -45,7 +48,10 @@ const ProductCard = ({ product }: { product: ProductProps }) => {
   return (
     <div
       className="product__item"
-      onClick={() => router.push(`/product/${product._id}`)}
+      onClick={(e) => {
+        e.stopPropagation();
+        router.push(`/product/${product._id}`);
+      }}
     >
       <div className="product__item--thumbs">
         {product.sale != 0 ? (
@@ -100,10 +106,10 @@ const ProductCard = ({ product }: { product: ProductProps }) => {
           ))}
         </div>
         <div className="product__item--info-price">
-          <span> {product.price.toLocaleString()}₫</span>
+          <span> {formatCurrency(product.price)}</span>
           {product.sale != 0 && (
             <>
-              <span> {product.price.toLocaleString()}₫</span>
+              <span> {formatCurrency(product.price)}</span>
               <span>{-product.sale}%</span>
             </>
           )}

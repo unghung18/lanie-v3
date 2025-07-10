@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addItem, deleteItem } from "@/redux/slices/cartSlice";
 import { toggle } from "@/redux/slices/toggleCartSlice";
+import { formatCurrency } from "@/utils/FormatCurrency";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsTrash } from "react-icons/bs";
@@ -44,10 +45,10 @@ const ModalCart = ({ open }: { open: boolean }) => {
                     <div className="name">{item.title}</div>
                     <div className="price">
                       <span className="price-origin">
-                        {item.price.toLocaleString()}₫
+                        {formatCurrency(item.price)}₫
                       </span>
                       <span className="price-sale">
-                        {item.price.toLocaleString()}₫
+                        {formatCurrency(item.price)}₫
                       </span>
                     </div>
                   </div>
@@ -141,7 +142,7 @@ const ModalCart = ({ open }: { open: boolean }) => {
                       {item.selectedSize} / {item.selectedColor} / SL:{" "}
                       {item.selectedQuantity}
                     </div>
-                    <div>{item.selectedTotalPrice.toLocaleString()}₫</div>
+                    <div>{formatCurrency(item.selectedTotalPrice)}₫</div>
                   </div>
                 </div>
               </div>
@@ -150,7 +151,7 @@ const ModalCart = ({ open }: { open: boolean }) => {
           <div className="cart__right-footer">
             <div className="heading">
               <span>Subtotal</span>
-              <span>{totalAmount.toLocaleString()}₫</span>
+              <span>{formatCurrency(totalAmount)}₫</span>
             </div>
             <div className="buttons">
               <div className="button-main" onClick={handleShowCart}>

@@ -30,7 +30,6 @@ export default function RootLayout({
       <ReduxProvider>
         <body className={inter.className}>
           {children}
-          <div></div>
           <Modal />
           <ToastContainer
             position="top-right"

@@ -7,6 +7,7 @@ import { toggle } from "@/redux/slices/toggleCartSlice";
 import { toggleQuickview } from "@/redux/slices/toggleQuickviewSlice";
 import { addWishlistItem } from "@/redux/slices/wishlistSlice";
 import { ProductProps } from "@/types/types";
+import { formatCurrency } from "@/utils/FormatCurrency";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
@@ -89,11 +90,11 @@ const ProductInfo = ({ product }: { product: ProductProps }) => {
         <span>(123 bình luận )</span>
       </div>
       <div className="product-info__price">
-        <span>{product?.price.toLocaleString()}₫</span>
+        <span>{formatCurrency(product?.price)}₫</span>
         <div
           style={{ width: "2px", height: "15px", backgroundColor: "#E9E9E9" }}
         ></div>
-        <span>{product?.price.toLocaleString()}₫</span>
+        <span>{formatCurrency(product?.price)}₫</span>
         <span>{product?.sale}%</span>
       </div>
 
